@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/SUHeavenlyJuly_1C28_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-3823.20070821.vormd/iPhone1,1_1.0.2_1C28_Restore.ipsw
+rootfs_key: 7d5962d0b582ec2557c2cade50de90f4353a1c1de07b74212513fef9cc71fb890574bfe5
+kernelcache_iv:
+kernelcache_key:

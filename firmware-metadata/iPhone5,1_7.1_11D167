@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Sochi_11D167_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS7.1/031-4323.20140310.gdKZa/iPhone5,1_7.1_11D167_Restore.ipsw
+rootfs_key: ed0409cdb4a17b699e44f3d7c5d96cf7b93a7f1f0770cc2ed88c9669c658875a93421e76
+kernelcache_iv: 114d99a60d2660c8694e626f5ebc666c
+kernelcache_key: 01675c28ca17f12c848515f39fcb2e7783c9109b941818360d28fe37adecc186

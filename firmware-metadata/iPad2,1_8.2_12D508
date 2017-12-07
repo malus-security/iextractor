@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/OkemoZurs_12D508_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios8.2/031-06542-20150309-D4DC2FBE-C1FE-11E4-84FD-34803780E501/iPad2,1_8.2_12D508_Restore.ipsw
+rootfs_key: 9174ad4a4c1a7534f8940d964e683169e1945a9d02e6070adbd4864e34a4a38bb29761ca
+kernelcache_iv: 0265fc423048e2d65df78f2807d7af6e
+kernelcache_key: 28495e300ac1499662079b7c900998befd126ba05edb65aaf55f6f240e65cb1b

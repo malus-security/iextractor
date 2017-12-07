@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/BrightonMaps_10B329_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS6.1/091-2397.20130319.EEae9/iPad2,1_6.1.3_10B329_Restore.ipsw
+rootfs_key: 70f5ac054bf50a522fd39071f6acbd92954804599c1507b881d7d9c4026005e3867bfab0
+kernelcache_iv: 247ea923c137404f4faec7da75822b08
+kernelcache_key: 2bbdf3fea41600cd7ae46157af7f19b1726900802f2ec2022aa60b9a27a3261f

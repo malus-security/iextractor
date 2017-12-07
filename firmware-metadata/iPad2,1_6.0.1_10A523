@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Sundance_10A523_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS6/041-7942.20121101.Intn3/iPad2,1_6.0.1_10A523_Restore.ipsw
+rootfs_key: 7b704f6ae0bed4983161162a73028ae203d61542d174a9b42acaa6a5a679855650e7b79b
+kernelcache_iv: 4cf044be12de213cd63a03878c29cff0
+kernelcache_key: 8f57def92315acb45bca474afb45af3b37bcb41b20fae9ae8fbf10937134b80f

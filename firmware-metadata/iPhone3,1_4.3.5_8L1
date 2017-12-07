@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Durango_8L1_(iPhone3,1)
+firmware_download_url: http://appldnld.apple.com/iPhone4/041-1966.20110721.V3Ufe/iPhone3,1_4.3.5_8L1_Restore.ipsw
+rootfs_key: e5e061077217c4937e14d9c4ae1eeb8d69827aa4838168033dd5f1806ab485306a8aa3cf
+kernelcache_iv: d3e63e2ec8644d71700b6219481e9ab6
+kernelcache_key: a076ca188f08d13364406a357c05e1776b5225537545da21d137ea38ab850341

@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Jasper_8C148_(iPhone3,1)
+firmware_download_url: http://appldnld.apple.com/iPhone4/061-9858.20101122.Er456/iPhone3,1_4.2.1_8C148_Restore.ipsw
+rootfs_key: b2ee5018ef7d02e45ef67449d9e2ed5f876efae949de64a9a93dbcf7ff9ed84e041e9167
+kernelcache_iv: 318e0d3de933babc06d6500d9a6af759
+kernelcache_key: 9c32276861ad6935b5ed0af954de8953d569492b14be3600fa5fe93d4b8210e3

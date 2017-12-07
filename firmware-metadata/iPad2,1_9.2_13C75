@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Castlerock_13C75_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios9.2/031-29231-20151203-6749D840-8D8A-11E5-A245-59618B8BECEB/iPad2,1_9.2_13C75_Restore.ipsw
+rootfs_key: 7bffedcd30e1bcf1631b5cb68908064be46106d5403fe5d86e001e1f02a49ed0b078f40f
+kernelcache_iv: 2082a1c3a16da6ec4b6ba58c3aec5986
+kernelcache_key: ce6bac717dcd52468afa927bf7d11a2524b3233ca4d1867a06d113b30a12897f

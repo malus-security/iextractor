@@ -1,0 +1,35 @@
+#!/bin/bash
+
+source common
+
+if test $UID -ne 0; then
+    echo "You need to be root to run this script." 1>&2
+    exit 1
+fi
+
+if [[ $OSTYPE == darwin* ]]; then
+    image="$dir"/decrypted.dmg
+    if ! test -f "$image"; then
+        echo "there is no disk image file in $dir" 1>&2
+        echo "make sure you unpacked the contents of an .ipsw file and you have unpacked/decrypted the disk image file." 1>&2
+        exit 1
+    fi
+else
+    image="$dir"/rootfs.img
+    if ! test -f "$image"; then
+        echo "There is no rootfs image file in $dir" 1>&2
+        echo "Make sure you unpacked the contents of an .ipsw file and you have unpacked/decrypted the rootfs image file." 1>&2
+        exit 1
+    fi
+fi
+
+mount_point=/mnt/ios/"$base"
+mkdir -p "$mount_point"
+if mount | grep -qs "$mount_point"; then
+    echo "A volume is already mounted in $mount_point" 1>&2
+    echo "Unmount it first from $mount_point" 1>&2
+    exit 1
+fi
+
+cd ../bin
+./mount_fs "$image" "$mount_point"

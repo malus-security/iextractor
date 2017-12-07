@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Sochi_11D257_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS7.1/031-4776.20140627.JjYSr/iPad2,1_7.1.2_11D257_Restore.ipsw
+rootfs_key: 2ce48d3e6cbd6fd68c775f2f0261e205f27c78280035bb6bffadccfbec44f4d890bd34b9
+kernelcache_iv: b7a093c3c94101a4e80a758eab4fc3eb
+kernelcache_key: 1abf388fe4411f9881e22c8ddb0d7b72c513b9bdd466063bdc2bb793be3b3f27

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Use information from iPhone wiki: https://www.theiphonewiki.com/wiki/Firmware
+
+if test $# -ne 1; then
+    echo "Usage: $0 firmware-page" 1>&2
+    echo "Find firmware page on the iPhone wiki:"
+    echo "        https://www.theiphonewiki.com/wiki/Firmware"
+    exit 1
+fi
+
+url="$1"
+out=$(mktemp)
+wget -o /dev/null -O "$out" "$url"
+firmware_download_url=$(cat "$out" | grep -o 'keypage-download">.\+</span' | sed 's/^.*"\(http:[^"]*\).*$/\1/g')
+rootfs_key=$(cat "$out" | grep -o 'keypage-rootfs-key">[^<]\+<' | sed 's/.*>\([^<]*\)</\1/g')
+kernelcache_iv=$(cat "$out" | grep -o 'keypage-kernelcache-iv">[^<]\+<' | sed 's/.*>\([^<]*\)</\1/g')
+kernelcache_key=$(cat "$out" | grep -o 'keypage-kernelcache-key">[^<]\+<' | sed 's/.*>\([^<]*\)</\1/g')
+
+cat <<END
+firmware_keys_url: $url
+firmware_download_url: $firmware_download_url
+rootfs_key: $rootfs_key
+kernelcache_iv: $kernelcache_iv
+kernelcache_key: $kernelcache_key
+END
+
+rm "$out"

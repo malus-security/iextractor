@@ -1,0 +1,13 @@
+# Update STORE to the folder you want to store downloaded firmware files
+# and processed files.
+STORE=.
+
+# Where to store downloaded firmware (.ipsw) files.
+IPSW_STORE="$STORE"/ipsw
+
+# Where to store temporary processed files.
+TMP_STORE="$STORE"/tmp
+
+# Where to store useful extracted files: kernelcache, shared library files.
+# They are usually linked from TMP_STORE.
+EXTRACTED_STORE="$STORE"/extracted

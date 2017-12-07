@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Monarch_13A344_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios9/058-21825-20150916-2CFEADD0-5678-11E5-9EC1-F7F76CA99CB1/iPhone5,1_9.0_13A344_Restore.ipsw
+rootfs_key: 07e9c1f32aa1a954b4aaa31123c1c6201bd8aa113e5d8a924c5f708967432b0091adfd1a
+kernelcache_iv: fe8e01332f1c45dbf1d062980930d026
+kernelcache_key: 5ae7728a2915eaf5ddbcdd4069edcb59a5a848cec347a6596a989637eb0b497d

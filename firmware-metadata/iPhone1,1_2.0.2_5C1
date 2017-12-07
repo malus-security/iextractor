@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Big_Bear_5C1_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-5246.20080818.2V0hO/iPhone1,1_2.0.2_5C1_Restore.ipsw
+rootfs_key: ee4eeeb62240c1378c739696dff9fef2c88834e98877f55a29c147e7d5b137967197392a
+kernelcache_iv: 661f05d1599967135b86e82e2377b58d
+kernelcache_key: f6f00f9369bb19855b9a3d0a69e15a2d

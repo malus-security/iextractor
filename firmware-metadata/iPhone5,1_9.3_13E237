@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Eagle_13E237_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS9.3/031-55518-20160328-92D092CC-F29A-11E5-A1E1-DC0EF816D560/iPhone5,1_9.3_13E237_Restore.ipsw
+rootfs_key: 2a66fd6377af8f60d5e300ac3aa8d9c44a1c0dee94579ad3f8a26515debbf381bb971ae8
+kernelcache_iv: 17026ef62f8da01dc0f4e7d2b8b54d4c
+kernelcache_key: 4ca5ec9e8dc9c5f77412c699fe724a5bfe101a79e1f2134e53bbb990e62a8c96

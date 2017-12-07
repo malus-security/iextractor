@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source common
+
+if test $UID -ne 0; then
+    echo "You need to be root to run this script." 1>&2
+    exit 1
+fi
+
+mount_point=/mnt/ios/"$base"
+if ! mount | grep -qs "$mount_point"; then
+    echo "No volume is mounted in $mount_point" 1>&2
+    exit 1
+fi
+
+cd ../bin
+./unmount_fs "$mount_point"
+rmdir "$mount_point"

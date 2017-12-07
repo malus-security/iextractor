@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Monarch_13A452_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios9.0.2/031-37493-20150930-7EC95B66-64A0-11E5-9A5D-54E151D92A8C/iPad2,1_9.0.2_13A452_Restore.ipsw
+rootfs_key: d5b9cc7400bf63e0130da54524eb1cf8bb4d03e3c72f459c01c45da76b41e627299103b1
+kernelcache_iv: 0feb3f3e8efe73b1c00c714bfb7f264d
+kernelcache_key: 1734f2b0cea3fe1031c36b1128b033c2b60eef8214b8c2a037a6d8f8fa35f548

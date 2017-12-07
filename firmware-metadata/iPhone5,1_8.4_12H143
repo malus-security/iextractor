@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Copper_12H143_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios8.4/ipsw/031-25986-20150630-7A54E6EE-1B90-11E5-BADA-A963BE268FF7/iPhone5,1_8.4_12H143_Restore.ipsw
+rootfs_key: 9a4af15d1d95672675bf5d5028c4c5fa6206a6154878e6859d3265c38e5830f02c441b17
+kernelcache_iv: 83c07c33005c167326d5e8a090060808
+kernelcache_key: 79f3c0b2dcb2a665728c7bc48d4df9479cafe50b41df81f0a6044c4a285047e8

@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Boulder_13B143_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios9.1/031-41160-20151021-BA1AF502-73FB-11E5-8F88-AB7243DA716B/iPhone5,1_9.1_13B143_Restore.ipsw
+rootfs_key: 93177b8be46db86c290eb311b448daf067c0b0dc4ece6e65b6a5af7bfcc78afc8c10a541
+kernelcache_iv: 4d04402f9079a949e6b2146185027543
+kernelcache_key: 9630460d4694f48d8990635a93b5e905e1deaba6aee849e15488bf5c976215e0

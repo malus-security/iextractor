@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Boulder_13B143_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios9.1/031-40994-20151021-BA17F6A4-73FB-11E5-B0C8-917243DA716B/iPad2,1_9.1_13B143_Restore.ipsw
+rootfs_key: 688bc6844ad58c585925cf382eae81063a806420bb58717f437a35824fd18446bef884cb
+kernelcache_iv: 5c31cefabccd74f26bffee0b5be1d043
+kernelcache_key: c4d27c174552c1e9ac1f0dce79cbee4be2bae5bee54dece0ab92bc174cd304ad

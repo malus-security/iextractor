@@ -1,0 +1,36 @@
+#!/bin/bash
+
+source common
+
+t=${base%_*}
+version=${t##*_}
+major=${version%%.*}
+
+if test "$major" -lt 9; then
+    binary_file="$dir"/sandboxd
+    if ! test -f "$binary_file"; then
+        echo "There is no sandboxd file in $dir" 1>&2
+        exit 1
+    fi
+
+    dest="$out_dir"/sandbox_profiles
+    if test -d "$dest"; then
+        if_no_exit "Sandbox profiles folder $dest already exists. Extraction has likely happened previously."
+    fi
+    mkdir -p "$dest"
+else
+    binary_file="$dir"/com.apple.security.sandbox.kext
+    if ! test -f "$binary_file"; then
+        echo "There is no com.apple.security.sandbox.kext file in $dir" 1>&2
+        exit 1
+    fi
+
+    dest="$out_dir"/sandbox_bundle
+    if test -f "$dest"; then
+        if_no_exit "Sandbox profiles bundle $dest already exists. Extraction has likely happened previously."
+    fi
+    mkdir -p "$dest"
+fi
+
+cd ../tools/sandblaster/helpers/
+./extract_sandbox_profiles ../../"$binary_file" "$version" ../../"$out_dir"

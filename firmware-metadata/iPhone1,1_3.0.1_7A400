@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Kirkwood_7A400_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-6974.20090731.Cf4Tg/iPhone1,1_3.0.1_7A400_Restore.ipsw
+rootfs_key: b40c24a019b995593b89594fa0866e5e2a5ff2e052bb98c134025f9ab01c554056fb16a6
+kernelcache_iv: 63680cd8965137a064a3d19a689a80b3
+kernelcache_key: 5bf1ea6596f26dc37ee2b2b6a43e1320

@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Baker_8B117_(iPhone3,1)
+firmware_download_url: http://appldnld.apple.com/iPhone4/061-7939.20100908.Lcyg3/iPhone3,1_4.1_8B117_Restore.ipsw
+rootfs_key: 2ab6aea67470994ec3453791ac75f6497c081edd1991e560a61dd666ac4b73f43c781739
+kernelcache_iv: a52166be88417c9a4db00b838512e664
+kernelcache_key: 19701b9ceac9811d25a5a9cc1718d8b8347ac432c1e8c0660f97fe9cddeb964c

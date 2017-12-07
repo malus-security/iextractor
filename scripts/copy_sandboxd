@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source common
+
+mount_point=/mnt/ios/"$base"
+if ! mount | grep -qs "$mount_point"; then
+    echo "No volume is mounted in $mount_point" 1>&2
+    exit 1
+fi
+
+path_to_sandboxd=/usr/libexec/sandboxd
+src="$mount_point"/"$path_to_sandboxd"
+if ! test -f "$src"; then
+    echo "There is no sandboxd file ($path_to_sandboxd) in $mount_point" 1>&2
+    exit 1
+fi
+
+dest="$dir"/sandboxd
+if test -f "$dest"; then
+    if_no_exit "Sandboxd file $dest already exists, a previous copying has probably taken place."
+fi
+
+echo "Copying sandboxd file to $dest ..."
+cp "$src" "$dest"

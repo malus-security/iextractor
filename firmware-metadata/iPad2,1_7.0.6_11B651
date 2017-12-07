@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/InnsbruckTaos_11B651_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS7/031-2920.20140221.8j5GW/iPad2,1_7.0.6_11B651_Restore.ipsw
+rootfs_key: e0ec291cacc67e03da916535c3ee1b957b7242e5ba253f0c9db451bc061e41e28344da58
+kernelcache_iv: 047757676fae30e4737d7573b9887492
+kernelcache_key: 3c6c1a3123bfe4f85fbcfc3341524db9b7d9cf63a0243f8da48e62bc1a5a185a

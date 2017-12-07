@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source common
+
+t=${base%_*}
+version=${t##*_}
+
+sandbox_kext="$dir"/com.apple.security.sandbox.kext
+if ! test -f "$sandbox_kext"; then
+    echo "There is no com.apple.security.sandbox.kext file in $dir" 1>&2
+    exit 1
+fi
+
+sb_ops="$out_dir"/sb_ops
+if test -f "$sb_ops"; then
+    if_no_exit "Sandbox operations file $sb_ops already exists. Extraction has likely happened previously."
+fi
+mkdir -p "$out_dir"
+
+cd ../tools/sandblaster/helpers/
+./extract_sandbox_operations ../../"$sandbox_kext" "$version" > ../../"$sb_ops"

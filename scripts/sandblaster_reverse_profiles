@@ -1,0 +1,42 @@
+#!/bin/bash
+
+source common
+
+t=${base%_*}
+version=${t##*_}
+major=${version%%.*}
+
+sb_ops="$out_dir"/sb_ops
+if ! test -f "$sb_ops"; then
+    echo "There is no sb_ops file in $out_dir" 1>&2
+    exit 1
+fi
+
+dest="$out_dir"/reversed_profiles
+if test -d "$dest"; then
+    if_no_exit "Reversed sandbox profiles folder $dest already exists. Reversing has likely happened previously."
+fi
+mkdir -p "$dest"
+
+if test "$major" -lt 9; then
+    src="$out_dir"/sandbox_profiles
+    if ! test -d "$src"; then
+        echo "There is no sandbox_profiles/ folder in $out_dir" 1>&2
+        exit 1
+    fi
+
+    profiles=("$src"/*)
+    cd ../tools/sandblaster/reverse-sandbox/
+    for p in ${profiles[@]}; do
+        python reverse_sandbox.py -r "$version" -o ../../"$sb_ops" -d ../../"$dest" ../../"$p"
+    done
+else
+    src="$out_dir"/sandbox_bundle
+    if ! test -f "$src"; then
+        echo "There is no sandbox_bundle file in $out_dir" 1>&2
+        exit 1
+    fi
+
+    cd ../tools/sandblaster/reverse-sandbox/
+    python reverse_sandbox.py -r "$version" -o ../../"$sb_ops" -d ../../"$dest" ../../"$src"
+fi

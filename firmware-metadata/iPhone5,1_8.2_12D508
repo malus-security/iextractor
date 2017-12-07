@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/OkemoZurs_12D508_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios8.2/031-06526-20150309-D4DAABD0-C1FE-11E4-88F6-28803780E501/iPhone5,1_8.2_12D508_Restore.ipsw
+rootfs_key: cbec7deb2cad6c31d2b8c7e8db05631ac14eef089f80fc833b3415df6226f4cfc563f087
+kernelcache_iv: b090f09895509fc1d4673576c56c077a
+kernelcache_key: a951414538416a2acf11bccd37eeb0931ea61a320d41fafba639269a51b11fad

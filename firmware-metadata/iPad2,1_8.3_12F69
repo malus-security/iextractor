@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Stowe_12F69_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios8.3/031-14862-20150408-42988B78-D8B7-11E4-B18B-DA1A90F2D2C2/iPad2,1_8.3_12F69_Restore.ipsw
+rootfs_key: f409b67d7b28d85219dcc19420fc73cdc94da0b21df9b4955000fd62db5d5cd090a217ab
+kernelcache_iv: 89cb10124ccf878204cf3a9330d9f356
+kernelcache_key: 9b0f9fca4b13b9d0bfc3bbafe8220c21602017c23c55a8e4ba82b6f761f9d076

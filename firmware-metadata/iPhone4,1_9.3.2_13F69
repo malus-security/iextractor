@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Frisco_13F69_(iPhone4,1)
+firmware_download_url: http://appldnld.apple.com/ios9.3.2/031-62190-20160516-E6F57D7A-13A8-11E6-BDFF-CBD8400DF7EB/iPhone4,1_9.3.2_13F69_Restore.ipsw
+rootfs_key: a4d3af6010e7f434008f005f0a32b48f91a9b514aa429e59484db27d2ba49951df546325
+kernelcache_iv: 9f8cfdfceeaecae0ccc045667d18db09
+kernelcache_key: 8bf6f42f9bdfdbb38d16a09de08c4a8af0c2fcf1569e4fa1b1c46e8735488f22

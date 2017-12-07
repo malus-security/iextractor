@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Eagle_13E238_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS9.3.1/031-55864-20160331-09AC6436-F5E6-11E5-A18E-40CB2D794EB1/iPad2,1_9.3.1_13E238_Restore.ipsw
+rootfs_key: a5f1d0ac4d850db68fc87615031330ad2843e1f4559e501c7e6094c5c77bc491123a5f60
+kernelcache_iv: 6f4fc7100829d0773dcc3c1d026fbb11
+kernelcache_key: 3ca5770a6f8d7c0cbbeef55c20100d61844296e44148177cf6900241b81bb369

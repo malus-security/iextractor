@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source common
+
+mount_point=/mnt/ios/"$base"
+if ! mount | grep -qs "$mount_point"; then
+    echo "No volume is mounted in $mount_point" 1>&2
+    exit 1
+fi
+
+path_to_dyld_shared_cache=/System/Library/Caches/com.apple.dyld
+paths=("$mount_point"/"$path_to_dyld_shared_cache"/dyld_shared_cache_*)
+echo $paths
+if test "${#paths[@]}" -eq 0; then
+    echo "There is no dyld_shared_cache file ($path_to_dyld_shared_cache) in $mount_point" 1>&2
+    exit 1
+elif test "${#paths[@]}" -eq 1; then
+    src=${paths[0]}
+else
+    src=${paths[0]}
+    echo "Multiple shared cache files, going for the first one: $src"
+fi
+
+dest="$dir"/dyld_shared_cache
+if test -d "$dest"; then
+    if_no_exit "Library extraction folder $dest already exists, a previous copying has probably taken place."
+else
+    mkdir "$dir"/dyld_shared_cache/
+fi
+
+cd ../bin
+./extract_dyld_shared_cache "$src" "$dest"

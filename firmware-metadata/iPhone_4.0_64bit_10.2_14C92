@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Corry_14C92_(iPhone6,1)
+firmware_download_url: http://appldnld.apple.com/ios10.2seed/031-93643-20161207-6173C962-BBD8-11E6-B93D-977FE47229E1/iPhone_4.0_64bit_10.2_14C92_Restore.ipsw
+rootfs_key:
+kernelcache_iv:
+kernelcache_key:

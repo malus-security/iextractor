@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/SUNorthstarTwo_7E18_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-7481.20100202.4orot/iPhone1,1_3.1.3_7E18_Restore.ipsw
+rootfs_key: 3c0f821663316c08a0a059c2979ecf47d13b363de3a44010d0de0b0a5cf878cfe39d00c3
+kernelcache_iv: 31e711201cf4dcf47be5be2a5b1b87a1
+kernelcache_key: d0dfac22c03212f8a75fc9c69fe548b6

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+source common
+
+if test $# -ne 1; then
+    echo "Usage: $0 <firmware-identifier>" 1>&2
+    echo "" 1>&2
+    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
+    exit 1
+fi
+
+dmg=$(ls -S "$dir" | grep '^[0-9]\{3\}-[0-9]\+-[0-9]\{3\}.dmg' 2> /dev/null | head -n 1)
+if ! test -f "$dir"/"$dmg"; then
+    echo "There is no .dmg file in $dir" 1>&2
+    echo "Folder $dir doesn't store contents of an unpacked .ipsw file" 1>&2
+    exit 1
+fi
+
+if test -f "$dir"/decrypted.dmg; then
+    if_no_exit "Decrypted image file $dir/decrypted.dmg already exists, a previous decryption may have already taken place."
+fi
+
+rootfs_key=$(cat "$metadata" | grep '^rootfs_key:' | sed 's/^[^:]*://' | tr -d ' ')
+
+cd ../bin
+./decrypt_fs "$dir"/"$dmg" "$rootfs_key"

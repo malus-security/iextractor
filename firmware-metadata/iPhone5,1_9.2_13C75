@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Castlerock_13C75_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios9.2/031-29215-20151203-674D7EBE-8D8A-11E5-BBB6-62618B8BECEB/iPhone5,1_9.2_13C75_Restore.ipsw
+rootfs_key: 05465982f36ec20f831e44b54a97890173b2c6e3baeb37c9b3f2f1826a90202f2ee84f9e
+kernelcache_iv: ea6fa12960313dd7e600f4523f57a315
+kernelcache_key: f57768c454a0abd4e35e8e43831021b741e785a6e6cf89be75bcf5ced3ca3c0c

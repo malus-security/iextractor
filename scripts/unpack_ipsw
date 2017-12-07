@@ -1,0 +1,28 @@
+#!/bin/bash
+
+source common
+
+if ! test -f "$ipsw"; then
+    echo "Firmware file ($ipsw) does not exist." 1>&2
+    exit 1
+fi
+
+if ! grep '.ipsw$' <<<"$ipsw" > /dev/null 2>&1; then
+    echo "Firmware file ($ipsw) must be an .ipsw file." 1>&2
+    exit 1
+fi
+
+if ! file "$ipsw" | grep -i "zip" > /dev/null 2>&1; then
+    echo "Firmware file ($ipsw) must be an .ipsw file." 1>&2
+    exit 1
+fi
+
+if test -d "$dir"; then
+    if_no_exit "Folder to unpack ($dir) already exists, a previous unpacking may have already taken place."
+fi
+
+echo "Creating folder $dir ..."
+test -d "$dir" || mkdir -p "$dir"
+
+echo "Unpacking ipsw file $ipsw to $dir ..."
+unzip -o -qq "$ipsw" -d "$dir"

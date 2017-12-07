@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/WhitetailSeed_14A5261v_(iPhone5,1)
+firmware_download_url:
+rootfs_key:
+kernelcache_iv: 236f96ec6288fdce74d484b8fd53d050
+kernelcache_key: 5c7720a942c4706f483c51535df29d855d541487eacb542183a885f2863eee85

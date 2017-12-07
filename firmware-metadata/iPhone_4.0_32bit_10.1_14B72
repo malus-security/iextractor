@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Butler_14B72_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios10.1/031-65091-20161024-3A160C6C-92E9-11E6-8400-13827FA31755/iPhone_4.0_32bit_10.1_14B72_Restore.ipsw
+rootfs_key:
+kernelcache_iv:
+kernelcache_key:

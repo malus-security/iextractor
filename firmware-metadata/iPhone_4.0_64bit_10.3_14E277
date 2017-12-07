@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Erie_14E277_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios10.3/091-02974-20170327-75848B3A-0D86-11E7-8DD8-92CE122AC769/iPhone_4.0_32bit_10.3_14E277_Restore.ipsw
+rootfs_key:
+kernelcache_iv:
+kernelcache_key:

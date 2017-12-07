@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Donner_12H321_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios8.4.1/031-31231-20150812-751BEF2C-3C8F-11E5-94D1-BB1A3A53DB92/iPad2,1_8.4.1_12H321_Restore.ipsw
+rootfs_key: d33bfc10cc397ae008d2e56685acb172b74f0eccbe652ecd52e234ab12705980b6483b60
+kernelcache_iv: 38d12734c845d1dcdb84846caf619da7
+kernelcache_key: 6dea51edc4c6f6c205e25ca1d9af5b9ee7167ed5685a937ad892e7fcbfb3e615

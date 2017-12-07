@@ -1,0 +1,125 @@
+#!/bin/bash
+
+cd ..
+
+if ! test -f config; then
+    echo "Error: config file does not exist." 1>&2
+    echo "Create one by copying config.sample and updating it." 1>&2
+    exit 1
+fi
+
+source config
+
+if ! test -d "$STORE"; then
+    echo "Error: Store folder ($STORE) does not exist." 1>&2
+    echo "Create it and its subfolders from the config file." 1>&2
+    exit 1
+fi
+
+if ! test -d "$IPSW_STORE"; then
+    echo "Error: Firmware files folder ($IPSW_STORE) does not exist." 1>&2
+    echo "Create it to store downloaded firmware images." 1>&2
+    exit 1
+fi
+
+if ! test -d "$TMP_STORE"; then
+    echo "Error: Temporary processing folder ($TMP_STORE) does not exist." 1>&2
+    echo "Create it to store temporary processed/unpacked data." 1>&2
+    exit 1
+fi
+
+if ! test -d "$EXTRACTED_STORE"; then
+    echo "Error: Extracted files folder ($EXTRACTED_STORE) does not exist." 1>&2
+    echo "Create it to store extracted files." 1>&2
+    exit 1
+fi
+
+VFDECRYPT=tools/vfdecrypt/vfdecrypt
+XPWN=tools/xpwn/builddir/ipsw-patch/xpwntool
+LZSSDEC=tools/lzssdec/lzssdec
+DYLD_EXTRACTOR=tools/dyld/dsc_extractor
+if [[ "$OSTYPE" == linux* ]]; then
+    JOKER=tools/joker/joker.ELF64
+elif [[ "$OSTYPE" == darwin* ]]; then
+    JOKER=tools/joker/joker.universal
+fi
+FW_METADATA_DIR=firmware-metadata
+
+if ! test -f "$VFDECRYPT"; then
+    echo "Error: vfdecrypt executable does not exist at $VFDECRYPT" 1>&2
+    echo "Make sure you compiled it." 1>&2
+    exit 1
+fi
+
+if ! test -f "$XPWN"; then
+    echo "Error: xpwntool executable does not exist at $XPWN" 1>&2
+    echo "Make sure you compiled it." 1>&2
+    exit 1
+fi
+
+if ! test -f "$LZSSDEC"; then
+    echo "Error: lzssdec executable does not exist at $LZSSDEC" 1>&2
+    echo "Make sure you compiled it." 1>&2
+    exit 1
+fi
+
+if ! test -f "$DYLD_EXTRACTOR"; then
+    echo "Error: dsc_extractor executable does not exist at $DYLD_EXTRACTOR" 1>&2
+    exit 1
+fi
+
+if ! test -f "$JOKER"; then
+    echo "Error: joker executable does not exist at $JOKER" 1>&2
+    exit 1
+fi
+
+if test $# -ne 1; then
+    echo "Usage: $0 <firmware-identifier>" 1>&2
+    echo "" 1>&2
+    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
+    exit 1
+fi
+
+cd scripts/
+
+base="$1"
+metadata=../"$FW_METADATA_DIR/$base"
+if ! test -f "$metadata"; then
+    echo "There is no configuration file in $FW_METADATA_DIR for identifier $base" 1>&2
+    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
+    exit 1
+fi
+
+VFDECRYPT=../"$VFDECRYPT"
+XPWN=../"$XPWN"
+LZSSDEC=../"$LZSSDEC"
+DYLD_EXTRACTOR=../"$DYLD_EXTRACTOR"
+JOKER=../"$JOKER"
+FW_METADATA_DIR=../"$FW_METADATA_DIR"
+
+if [[ "$STORE" != /* ]]; then
+    STORE=../"$STORE"
+fi
+if [[ "$IPSW_STORE" != /* ]]; then
+    IPSW_STORE=../"$IPSW_STORE"
+fi
+if [[ "$TMP_STORE" != /* ]]; then
+    TMP_STORE=../"$TMP_STORE"
+fi
+if [[ "$EXTRACTED_STORE" != /* ]]; then
+    EXTRACTED_STORE=../"$EXTRACTED_STORE"
+fi
+
+dir="$TMP_STORE"/"$base"
+out_dir="$EXTRACTED_STORE"/"$base"
+ipsw="$IPSW_STORE"/"$base"_Restore.ipsw
+
+if_no_exit()
+{
+    echo -e "$1"
+    read -p "Do you want to continue?[y/N] " -n 1 -r
+    echo
+    if [[ "$REPLY" =~ ^[Nn]$ || "$REPLY" == "" ]]; then
+        exit 0
+    fi
+}

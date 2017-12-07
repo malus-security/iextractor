@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Innsbruck_11A465_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS7/091-9495.20130918.FuFu4/iPhone5,1_7.0_11A465_Restore.ipsw
+rootfs_key: 3fc09269ff2d59d9d1a611d0a480ad6fd4e71d1aa43056a2eb13799432494eebbc20ad36
+kernelcache_iv: 85437bbb506771cac155e4e2c01a671c
+kernelcache_key: fe0767f3c3e28d8a4f4326589de5210ba7601a5a0821893ac19e8263d40927f2

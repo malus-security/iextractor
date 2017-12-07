@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Telluride_9A405_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iPhone4/041-3310.20111109.Cfp76/iPad2,1_5.0.1_9A405_Restore.ipsw
+rootfs_key: bca4f26aec46e818da0def825f63c5e6c6b2cedd60f30c9d49d32e569dbd62358947c055
+kernelcache_iv: efb9fd3c6761dd22d453982c16f5c857
+kernelcache_key: 9176f5b2a9ce2fc2f00807b4cd0f9c4ce23b2c54fb302ee93f7485b46e983350

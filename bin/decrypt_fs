@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if test $# -ne 1 -a $# -ne 2; then
+    echo "Usage: $0 disk-image [rootfs-key]" 1>&2
+    echo "" 1>&2
+    echo "Arguments are disk-image file (.dmg) and (optional) root filesystem in case the image file is encrypted" 1>&2
+    exit 1
+fi
+
+VFDECRYPT=../tools/vfdecrypt/vfdecrypt
+
+dmg="$1"
+rootfs_key="$2"
+dir=$(dirname "$dmg")
+decrypted="$dir"/decrypted.dmg
+img="$dir"/rootfs.img
+
+if test -z "$rootfs_key"; then
+    echo "No rootfs key provided. Assuming none is required and not decrypting disk image."
+    echo "Creating a hardlink to disk image file in $decrypted ..."
+    ln -f "$dmg" "$decrypted"
+else
+    echo "Decrypting dmg file $dmg to $dir/decrypted.dmg ..."
+    "$VFDECRYPT" -k"$rootfs_key" -i"$dmg" -o"$decrypted"
+fi
+
+part_num=$(dmg2img -l "$decrypted" | grep "disk image" | awk '{print $2}' | head -c 2)
+echo "Extracting partition $part_num in dmg file $decrypted to filesystem image file $img ..."
+dmg2img -p "$part_num" -i "$decrypted" -o "$img"

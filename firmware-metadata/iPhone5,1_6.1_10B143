@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Brighton_10B143_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS6.1/041-6485.20130128.mt0dy/iPhone5,1_6.1_10B143_Restore.ipsw
+rootfs_key: 15d08d5d0ed7a69c8a73415f88715f28c65f66270a2713dca3425d515c6f64055898294e
+kernelcache_iv: df68a897117fc314ad75652e83aa8944
+kernelcache_key: 7cc5eb10a6cbbc5d808ae072ce84ea55468e880cd9e17167b3e0be240742c890

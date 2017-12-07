@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source common
+
+if test $UID -ne 0; then
+    echo "You need to be root to run this script." 1>&2
+    exit 1
+fi
+
+mount_point=/mnt/ios/"$base"
+if ! mount | grep -qs "$mount_point"; then
+    echo "No volume is mounted in $mount_point" 1>&2
+    exit 1
+fi
+
+fs_archive="$dir"/fs.tar.gz
+if test -f "$fs_archive"; then
+    if_no_exit "Filesystem archive file $fs_archive already exists, a previous archiving has probably taken place."
+fi
+
+echo "Packing filesystem to $fs_archive ..."
+tar -C "$mount_point" -czf "$fs_archive" .

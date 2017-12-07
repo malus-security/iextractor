@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/SUTimberline_5H11_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-5830.20090127.Mmni6/iPhone1,1_2.2.1_5H11_Restore.ipsw
+rootfs_key: 562ca0f7963eafb462da74a9c1f01a45c30a7eb5f1f493feceecae03ee6521a334f4ff68
+kernelcache_iv: 2b4764d4c5bdeaa4cea2100eac7c47bb
+kernelcache_key: de52cebf74b7747360535fde5c331bd1

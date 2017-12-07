@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Dillon_13D15_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios9.2.1/031-47675-20160119-8C3E56B2-B968-11E5-86F8-CF4A8FD31F8F/iPad2,1_9.2.1_13D15_Restore.ipsw
+rootfs_key: 5748be2d91bc8debeab0807198245f5733b8472642e7498d1900d646d8aa295e73d9d207
+kernelcache_iv: a7754ca8f3a417e4085102061d208b60
+kernelcache_key: 096867229c5bc1d5c6879c385dd800479ac941327b7a0e59edd88ba0d4548494

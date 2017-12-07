@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Apex_8A400_(iPhone3,1)
+firmware_download_url: http://appldnld.apple.com/iPhone4/061-8807.20100811.3Edre/iPhone3,1_4.0.2_8A400_Restore.ipsw
+rootfs_key: 28bded3ee52eda2f36a241009a493db357b8f19543c07bd3820a35498a1788ce4aa0c54c
+kernelcache_iv: 810ad53a78428842df24face82f37b9f
+kernelcache_key: 22308c2e2c4f34444184253850823c35a0cb73bd433bbd28230bb5e83759f4b7

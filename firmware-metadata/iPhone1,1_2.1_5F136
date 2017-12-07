@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Sugar_Bowl_5F136_(iPhone1,1)
+firmware_download_url: http://appldnld.apple.com.edgesuite.net/content.info.apple.com/iPhone/061-5202.20080909.gkbEj/iPhone1,1_2.1_5F136_Restore.ipsw
+rootfs_key: 31e3ff09ff046d5237187346ee893015354d2135e3f0f39480be63dd2a18444961c2da5d
+kernelcache_iv:
+kernelcache_key:

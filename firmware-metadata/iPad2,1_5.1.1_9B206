@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Hoodoo_9B206_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS5.1.1/041-4294.20120427.Pp5qM/iPad2,1_5.1.1_9B206_Restore.ipsw
+rootfs_key: 1592f908a94a87119996de158296e384338688fda5202bcacdab46c34c05d6d11277e946
+kernelcache_iv: 31585a3d70bc1a862ef67a3889bbf358
+kernelcache_key: 5d9211636f8c075ec6f753443ec56e9d5666e601fb1a32b82fcc2dffe30b7ad7

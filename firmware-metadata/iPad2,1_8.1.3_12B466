@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/SUOkemoTaosTwo_12B466_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/ios8.1.3/031-15491-20150119-8A7898EC-A005-11E4-88D8-4B565BAA4ECA/iPad2,1_8.1.3_12B466_Restore.ipsw
+rootfs_key: 20404f17a555df120a4ef8de63000968993d5a2e4eb7918b7399dd7d9c0c73e82aab0735
+kernelcache_iv: 9e397323ad79305d57f37e19ee82a438
+kernelcache_key: 99c67c3bcd3e9f747bf67adefa4e84873b3df3db8022cdca9d7e2da56dae726e

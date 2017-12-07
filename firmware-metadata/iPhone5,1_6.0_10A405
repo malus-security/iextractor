@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Sundance_10A405_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS6/Restore/041-7169.20120919.5Mial/iPhone5,1_6.0_10A405_Restore.ipsw
+rootfs_key: 64222b62d812d68e883b71c22a25b20b533dadad0333a54079d71995fb6ceb02b3536c99
+kernelcache_iv: 0253a2c484b0fef5fb44acb9e4093d41
+kernelcache_key: 129380581d7d1e4b0d535c0ba22d1639a9de25b1c88df96ed0a4781b75ea9c77

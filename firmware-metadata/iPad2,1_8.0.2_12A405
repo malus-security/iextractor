@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Okemo_12A405_(iPad2,1)
+firmware_download_url: http://appldnld.apple.com/iOS8/031-08115.20140925.jWgVT/iPad2,1_8.0.2_12A405_Restore.ipsw
+rootfs_key: b38d0949ec3a145d2ddd5a751f1cdbdd0da3d6a72f02db22b2941016b3ad8fb0359b7f83
+kernelcache_iv: a6422c1c11248743dd5f12272be2263e
+kernelcache_key: 5dda7ddc945819853d6637156876af91c2a9f5d6cd5892ed24f390a7d2ce6b2c

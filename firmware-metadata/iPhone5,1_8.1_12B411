@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/OkemoTaos_12B411_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS8.1/031-09568.20141020.2Dfj1/iPhone5,1_8.1_12B411_Restore.ipsw
+rootfs_key: 249e918e7c66621b7fa2cf85fe7d6ec1a12ee3b0066dcaaaa7a911f39cb5b108efc847ef
+kernelcache_iv: e8d7390d255cee458030a14bd946ec06
+kernelcache_key: 29728815b784449e975e36bfec64d0a94c5f6da96056107e818e53a957bf43c6

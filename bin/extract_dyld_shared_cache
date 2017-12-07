@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if test $# -ne 2; then
+    echo "Usage: $0 dyld_shared_cache output_folder" 1>&2
+    echo "" 1>&2
+    echo "Arguments are dyld_shared_cache file and folder where to store extracted library files" 1>&2
+    exit 1
+fi
+
+DYLD_EXTRACTOR=../tools/dyld/dsc_extractor
+
+dyld_shared_cache="$1"
+dyld_output="$2"
+
+if [[ $OSTYPE != darwin* ]]; then
+    echo "No support for extracting the dyld_shared_cache on the $OSTYPE platform"
+    exit 1
+fi
+
+echo "Extracting libraries from dyld_shared_cache file to $dyld_output ..."
+"$DYLD_EXTRACTOR" "$dyld_shared_cache" "$dyld_output"

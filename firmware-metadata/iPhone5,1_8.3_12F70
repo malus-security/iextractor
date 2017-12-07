@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Stowe_12F70_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/ios8.3/058-14361-20150408-6F9D447A-DAEB-11E4-9C08-906C90F2D2C2/iPhone5,1_8.3_12F70_Restore.ipsw
+rootfs_key: 18a3d31a41bb11704781d8c445f50cebf35c5b836582b6f5942f393230581bfa3d549013
+kernelcache_iv: 39ece9985a935ed26d3227f8526f3b56
+kernelcache_key: 93d9ad2f3657f8b3e2648322e0c1cd6698fcf2f2645e351c849457b87f98b936

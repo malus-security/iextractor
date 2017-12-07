@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source common
+
+kernelcache="$dir"/kernelcache.mach.arm
+if ! test -f "$kernelcache"; then
+    echo "There is no kernelcache.mach.arm file in $dir" 1>&2
+    exit 1
+fi
+
+sandbox_kext="$dir"/com.apple.security.sandbox.kext
+if test -f "$sandbox_kext"; then
+    if_no_exit "Sandbox extension file $sandbox_kext already exists. Extraction has likely happened previously."
+fi
+
+cd ../bin
+./extract_sandbox_extension "$kernelcache"

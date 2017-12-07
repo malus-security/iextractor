@@ -1,0 +1,6 @@
+[submodule "tools/sandblaster"]
+	path = tools/sandblaster
+	url = https://github.com/malus-security/sandblaster
+[submodule "tools/xpwn"]
+	path = tools/xpwn
+	url = https://github.com/planetbeing/xpwn

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 <firmware-identifier>" 1>&2
+    echo "" 1>&2
+    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
+    exit 1
+fi
+
+firmware_id="$1"
+
+cd scripts
+echo "* Download firmware image"
+yes N | ./download_ipsw "$firmware_id"
+echo "* Unpack firmware image"
+yes N | ./unpack_ipsw "$firmware_id"
+echo "* Decrypt disk image file"
+yes N | ./decrypt_fs "$firmware_id"
+echo "* Decrypt kernelcache"
+yes N | ./decrypt_kernel "$firmware_id"
+echo "* Extract sandbox extension"
+yes N | ./extract_sandbox_extension "$firmware_id"
+echo "* Mount root filesystem"
+yes N | sudo ./mount_fs "$firmware_id"
+echo "* Copy sandboxd"
+yes N | ./copy_sandboxd "$firmware_id"
+echo "* Extract dynamic library cache"
+yes N | ./extract_dyld_shared_cache "$firmware_id"
+echo "* Unmount root filesystem"
+yes N | sudo ./unmount_fs "$firmware_id"

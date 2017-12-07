@@ -1,0 +1,5 @@
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Okemo_12A365_(iPhone5,1)
+firmware_download_url: http://appldnld.apple.com/iOS8/031-05342.20140917.ZPfIL/iPhone5,1_8.0_12A365_Restore.ipsw
+rootfs_key: 6cb0a1ed9451ef7367135022453fdb70373d93005128b5fb686891f1049f18f22d9cde25
+kernelcache_iv: 74be5ff093330e792dd2539dec525b73
+kernelcache_key: d2929de4a29ce3a5f8846a0e406f18bb997cc112a3c452b7bc5b698546d59da7
