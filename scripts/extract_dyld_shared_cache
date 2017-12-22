@@ -2,6 +2,11 @@
 
 source common
 
+if [[ $OSTYPE != darwin* ]]; then
+    echo "No support for extracting the dyld_shared_cache on the $OSTYPE platform"
+    exit 1
+fi
+
 mount_point=/mnt/ios/"$base"
 if ! mount | grep -qs "$mount_point"; then
     echo "No volume is mounted in $mount_point" 1>&2
