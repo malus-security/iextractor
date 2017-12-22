@@ -1,11 +1,16 @@
-linux: 
-	gcc -o vfdecrypt vfdecrypt.c -lcrypto
-mac:
-	gcc -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib/ -o vfdecrypt vfdecrypt.c -lcrypto -DMAC_OSX
-install: 
-	cp ./vfdecrypt /usr/local/bin
-	ldconfig
-uninstall:
-	rm -rf /usr/local/bin/vfdecrypt
+CFLAGS = -Wall
+LDLIBS = -lcrypto
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	LDFLAGS = -L/opt/local/lib -lcrypto
+	CPPFLAGS = -I/opt/local/include -DMAC_OSX
+endif
+
+.PHONY: all clean
+
+all: vfdecrypt
+
 clean:
-	rm -rf ./vfdecrypt
+	-rm -f vfdecrypt
+	-rm -f *~
