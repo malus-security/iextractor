@@ -131,6 +131,12 @@ If you want to do all steps except the lengthier (and more storage hungry) steps
 ./all_no_pack_fs_no_dyld iPhone5,1_9.3_13E237
 ```
 
+Similarly, if you downloaded and unpacked IPSW files elsewhere (on another system), you copied the interesting extracted data and you want to work on that data without going into the download and unpack steps, you can use the `all_no_download_no_unpack` script:
+
+```
+./all_no_download_no_unpack iPhone5,1_9.3_13E237
+```
+
 You can run a single step by going to the `scripts/` subfolder and running a script there:
 
 ```
@@ -148,7 +154,7 @@ Each higher-layer script in the `scripts/` subfolder does a specific action: unp
 
 Each script uses a firmware id as an argument; supported firmware ids are files in the `firmware-metadata/` subfolder; each file in the `firmware-metadata/` subfolder uses the firmware id as a name and stores in plain text firmware-related information required by scripts. You can add support for a new firmware, by creating a file in the `firmware-metadata/` subfolder named after the firmware id and filling it with the required information (download URL and decryption keys) similar to existing files.
 
-You can run each script in the `scripts/` subfolder either by itself, or by tying scripts together in a wrapper script, such as `all`, `all_no_pack_fs` and `all_no_pack_fs_no_dyld`. For debugging purposes or if you want to work on the lower layers, use the scripts in the `bin/` subfolder.
+You can run each script in the `scripts/` subfolder either by itself, or by tying scripts together in a wrapper script, such as `all`, `all_no_pack_fs`, `all_no_pack_fs_no_dyld` and `all_no_download_no_unpack`. For debugging purposes or if you want to work on the lower layers, use the scripts in the `bin/` subfolder.
 
 When running a script, if previous output data exists it will prompt if you want to overwrite that. That is why, in a wrapper script, you would usually provide an `N` (for `no`) to the standard input of a script:
 
