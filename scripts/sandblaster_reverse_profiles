@@ -17,7 +17,7 @@ call_reverse()
     if [[ "$profile" != /* ]]; then
         profile=../../"$profile"
     fi
-    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$p"
+    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile"
 }
 
 t=${base%_*}
