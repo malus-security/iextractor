@@ -17,5 +17,14 @@ if test -f "$sb_ops"; then
 fi
 mkdir -p "$out_dir"
 
+if [[ $OSTYPE != darwin* ]]; then
+    echo "No support for extracting sandbox operations on the $OSTYPE platform"
+    exit 1
+fi
+
+if [[ "$sb_ops" != /* ]]; then
+    sb_ops=../../"$sb_ops"
+fi
+
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_operations ../../"$sandbox_kext" "$version" > ../../"$sb_ops"
+./extract_sandbox_operations ../../"$sandbox_kext" "$version" > "$sb_ops"

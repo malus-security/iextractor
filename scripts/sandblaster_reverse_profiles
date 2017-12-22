@@ -2,6 +2,24 @@
 
 source common
 
+call_reverse()
+{
+    version="$1"
+    sb_ops="$2"
+    dest="$3"
+    profile="$4"
+    if [[ "$sb_ops" != /* ]]; then
+        sb_ops=../../"$sb_ops"
+    fi
+    if [[ "$dest" != /* ]]; then
+        dest=../../"$dest"
+    fi
+    if [[ "$profile" != /* ]]; then
+        profile=../../"$profile"
+    fi
+    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$p"
+}
+
 t=${base%_*}
 version=${t##*_}
 major=${version%%.*}
@@ -28,7 +46,7 @@ if test "$major" -lt 9; then
     profiles=("$src"/*)
     cd ../tools/sandblaster/reverse-sandbox/
     for p in ${profiles[@]}; do
-        python reverse_sandbox.py -r "$version" -o ../../"$sb_ops" -d ../../"$dest" ../../"$p"
+        call_reverse "$version" "$sb_ops" "$dest" "$p"
     done
 else
     src="$out_dir"/sandbox_bundle
@@ -38,5 +56,5 @@ else
     fi
 
     cd ../tools/sandblaster/reverse-sandbox/
-    python reverse_sandbox.py -r "$version" -o ../../"$sb_ops" -d ../../"$dest" ../../"$src"
+    call_reverse "$version" "$sb_ops" "$dest" "$src"
 fi

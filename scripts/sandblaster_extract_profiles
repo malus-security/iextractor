@@ -32,5 +32,14 @@ else
     mkdir -p "$dest"
 fi
 
+if [[ $OSTYPE != darwin* ]]; then
+    echo "No support for extracting sandbox profiles on the $OSTYPE platform"
+    exit 1
+fi
+
+if [[ "$out_dir" != /* ]]; then
+    out_dir=../../"$out_dir"
+fi
+
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_profiles ../../"$binary_file" "$version" ../../"$out_dir"
+./extract_sandbox_profiles ../../"$binary_file" "$version" "$out_dir"
