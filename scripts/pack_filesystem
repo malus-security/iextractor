@@ -13,7 +13,7 @@ if ! mount | grep -qs "$mount_point"; then
     exit 1
 fi
 
-fs_archive="$dir"/fs.tar.gz
+fs_archive="$out_dir"/fs.tar.gz
 if test -f "$fs_archive"; then
     if_no_exit "Filesystem archive file $fs_archive already exists, a previous archiving has probably taken place."
 fi

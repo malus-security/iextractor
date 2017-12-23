@@ -8,16 +8,16 @@ if test $UID -ne 0; then
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    image="$dir"/decrypted.dmg
+    image="$out_dir"/decrypted.dmg
     if ! test -f "$image"; then
-        echo "there is no disk image file in $dir" 1>&2
+        echo "there is no disk image file in $out_dir" 1>&2
         echo "make sure you unpacked the contents of an .ipsw file and you have unpacked/decrypted the disk image file." 1>&2
         exit 1
     fi
 else
-    image="$dir"/rootfs.img
+    image="$out_dir"/rootfs.img
     if ! test -f "$image"; then
-        echo "There is no rootfs image file in $dir" 1>&2
+        echo "There is no rootfs image file in $out_dir" 1>&2
         echo "Make sure you unpacked the contents of an .ipsw file and you have unpacked/decrypted the rootfs image file." 1>&2
         exit 1
     fi

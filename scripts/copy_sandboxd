@@ -15,7 +15,7 @@ if ! test -f "$src"; then
     exit 1
 fi
 
-dest="$dir"/sandboxd
+dest="$out_dir"/sandboxd
 if test -f "$dest"; then
     if_no_exit "Sandboxd file $dest already exists, a previous copying has probably taken place."
 fi

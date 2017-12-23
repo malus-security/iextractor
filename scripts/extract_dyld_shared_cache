@@ -26,11 +26,11 @@ else
     echo "Multiple shared cache files, going for the first one: $src"
 fi
 
-dest="$dir"/dyld_shared_cache
+dest="$out_dir"/dyld_shared_cache
 if test -d "$dest"; then
     if_no_exit "Library extraction folder $dest already exists, a previous copying has probably taken place."
 else
-    mkdir "$dir"/dyld_shared_cache/
+    mkdir "$out_dir"/dyld_shared_cache/
 fi
 
 cd ../bin

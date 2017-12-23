@@ -111,11 +111,10 @@ You then need to create the storage subfolders. Assuming `STORE` points to the c
 
 ```
 mkdir ipsw
-mkdir tmp
-mkdir extracted
+mkdir out
 ```
 
-These folders store all data downloaded, extracted and processed by iExtractor. Look in these folders for interesting data and copy data from/to these folders if you want to extract/process part of it on another system.
+The `ipsw/` folder stores downloaded IPSW files and the `out/` folder stores data extracted and processed by iExtractor. You will look in the `out/` folder for interesting data and copy data from/to the `out/` folder if you want to extract/process part of it on another system.
 
 ## Usage
 

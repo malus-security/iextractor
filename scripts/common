@@ -22,15 +22,9 @@ if ! test -d "$IPSW_STORE"; then
     exit 1
 fi
 
-if ! test -d "$TMP_STORE"; then
-    echo "Error: Temporary processing folder ($TMP_STORE) does not exist." 1>&2
+if ! test -d "$OUT_STORE"; then
+    echo "Error: Output folder ($OUT_STORE) does not exist." 1>&2
     echo "Create it to store temporary processed/unpacked data." 1>&2
-    exit 1
-fi
-
-if ! test -d "$EXTRACTED_STORE"; then
-    echo "Error: Extracted files folder ($EXTRACTED_STORE) does not exist." 1>&2
-    echo "Create it to store extracted files." 1>&2
     exit 1
 fi
 
@@ -103,15 +97,11 @@ fi
 if [[ "$IPSW_STORE" != /* ]]; then
     IPSW_STORE=../"$IPSW_STORE"
 fi
-if [[ "$TMP_STORE" != /* ]]; then
-    TMP_STORE=../"$TMP_STORE"
-fi
-if [[ "$EXTRACTED_STORE" != /* ]]; then
-    EXTRACTED_STORE=../"$EXTRACTED_STORE"
+if [[ "$OUT_STORE" != /* ]]; then
+    OUT_STORE=../"$OUT_STORE"
 fi
 
-dir="$TMP_STORE"/"$base"
-out_dir="$EXTRACTED_STORE"/"$base"
+out_dir="$OUT_STORE"/"$base"
 ipsw="$IPSW_STORE"/"$base"_Restore.ipsw
 
 if_no_exit()

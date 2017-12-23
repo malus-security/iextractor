@@ -5,9 +5,9 @@ source common
 t=${base%_*}
 version=${t##*_}
 
-sandbox_kext="$dir"/com.apple.security.sandbox.kext
+sandbox_kext="$out_dir"/com.apple.security.sandbox.kext
 if ! test -f "$sandbox_kext"; then
-    echo "There is no com.apple.security.sandbox.kext file in $dir" 1>&2
+    echo "There is no com.apple.security.sandbox.kext file in $out_dir" 1>&2
     exit 1
 fi
 

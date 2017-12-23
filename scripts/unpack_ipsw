@@ -17,12 +17,12 @@ if ! file "$ipsw" | grep -i "zip" > /dev/null 2>&1; then
     exit 1
 fi
 
-if test -d "$dir"; then
-    if_no_exit "Folder to unpack ($dir) already exists, a previous unpacking may have already taken place."
+if test -d "$out_dir"; then
+    if_no_exit "Folder to unpack ($out_dir) already exists, a previous unpacking may have already taken place."
 fi
 
-echo "Creating folder $dir ..."
-test -d "$dir" || mkdir -p "$dir"
+echo "Creating folder $out_dir ..."
+test -d "$out_dir" || mkdir -p "$out_dir"
 
-echo "Unpacking ipsw file $ipsw to $dir ..."
-unzip -o -qq "$ipsw" -d "$dir"
+echo "Unpacking ipsw file $ipsw to $out_dir ..."
+unzip -o -qq "$ipsw" -d "$out_dir"

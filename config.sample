@@ -5,9 +5,5 @@ STORE=.
 # Where to store downloaded firmware (.ipsw) files.
 IPSW_STORE="$STORE"/ipsw
 
-# Where to store temporary processed files.
-TMP_STORE="$STORE"/tmp
-
-# Where to store useful extracted files: kernelcache, shared library files.
-# They are usually linked from TMP_STORE.
-EXTRACTED_STORE="$STORE"/extracted
+# Where to store extracted and processed files.
+OUT_STORE="$STORE"/out

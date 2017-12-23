@@ -7,9 +7,9 @@ version=${t##*_}
 major=${version%%.*}
 
 if test "$major" -lt 9; then
-    binary_file="$dir"/sandboxd
+    binary_file="$out_dir"/sandboxd
     if ! test -f "$binary_file"; then
-        echo "There is no sandboxd file in $dir" 1>&2
+        echo "There is no sandboxd file in $out_dir" 1>&2
         exit 1
     fi
 
@@ -19,9 +19,9 @@ if test "$major" -lt 9; then
     fi
     mkdir -p "$dest"
 else
-    binary_file="$dir"/com.apple.security.sandbox.kext
+    binary_file="$out_dir"/com.apple.security.sandbox.kext
     if ! test -f "$binary_file"; then
-        echo "There is no com.apple.security.sandbox.kext file in $dir" 1>&2
+        echo "There is no com.apple.security.sandbox.kext file in $out_dir" 1>&2
         exit 1
     fi
 
