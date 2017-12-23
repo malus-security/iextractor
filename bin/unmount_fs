@@ -16,8 +16,7 @@ mount_point="${1%/}"
 
 echo "Unmounting disks for mount point $mount_point ..."
 if [[ $OSTYPE == darwin* ]]; then
-    for d in $(hdiutil info | grep -B 15 "$mount_point" | grep '^/dev/disk[0-9]\+\t' | cut -d $'\t' -f 1 | tac); do
-        echo "$d"
+    for d in $(hdiutil info | grep -B 15 "$mount_point" | grep '^/dev/disk[0-9]\+'$'\t' | cut -d $'\t' -f 1 | tac); do
         hdiutil detach "$d"
     done
 else
