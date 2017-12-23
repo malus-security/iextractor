@@ -26,5 +26,9 @@ if [[ "$sb_ops" != /* ]]; then
     sb_ops=../../"$sb_ops"
 fi
 
+if [[ "$sandbox_kext" != /* ]]; then
+    sandbox_kext=../../"$sandbox_kext"
+fi
+
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_operations ../../"$sandbox_kext" "$version" > "$sb_ops"
+./extract_sandbox_operations "$sandbox_kext" "$version" > "$sb_ops"

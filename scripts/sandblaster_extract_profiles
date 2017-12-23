@@ -29,7 +29,6 @@ else
     if test -f "$dest"; then
         if_no_exit "Sandbox profiles bundle $dest already exists. Extraction has likely happened previously."
     fi
-    mkdir -p "$dest"
 fi
 
 if [[ $OSTYPE != darwin* ]]; then
@@ -41,5 +40,9 @@ if [[ "$out_dir" != /* ]]; then
     out_dir=../../"$out_dir"
 fi
 
+if [[ "$binary_file" != /* ]]; then
+    binary_file=../../"$binary_file"
+fi
+
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_profiles ../../"$binary_file" "$version" "$out_dir"
+./extract_sandbox_profiles "$binary_file" "$version" "$out_dir"
