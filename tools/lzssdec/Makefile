@@ -1,10 +1,9 @@
-CFLAGS = -Wall #-m32
-#LDFLAGS = -m32
+CXXFLAGS = -Wall
 
 .PHONY: all clean
 
 all: lzssdec
 
 clean:
-	-rm -f *~ *.o
 	-rm -f lzssdec
+	-rm -f *~
