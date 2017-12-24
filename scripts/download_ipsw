@@ -13,6 +13,7 @@ if test -f "$ipsw"; then
 fi
 
 debug "Downloading firmware image file from $url to $ipsw ..."
+info "This may take a while depending on your Internet bandwidth ..."
 debug "wget $url -O $ipsw"
 wget "$url" -O "$ipsw" > /dev/null 2>&1
 warn_if_error

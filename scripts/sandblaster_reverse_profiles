@@ -48,6 +48,7 @@ if test "$major" -lt 9; then
 
     profiles=("$src"/*)
     debug "Change working directory to ../tools/sandblaster/reverse-sandbox/"
+    info "This step will take some time ..."
     cd ../tools/sandblaster/reverse-sandbox/
     for p in ${profiles[@]}; do
         call_reverse "$version" "$sb_ops" "$dest" "$p"
@@ -60,6 +61,7 @@ else
     fi
 
     debug "Change working directory to ../tools/sandblaster/reverse-sandbox/"
+    info "This step will take some time ..."
     cd ../tools/sandblaster/reverse-sandbox/
     call_reverse "$version" "$sb_ops" "$dest" "$src"
 fi
