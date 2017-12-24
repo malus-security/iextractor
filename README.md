@@ -73,6 +73,13 @@ cd tools/lzssdec/
 make
 ```
 
+  * `dsc_extractor`
+
+```
+cd tools/dyld/
+make
+```
+
   * `xpwn`
 
 ```
