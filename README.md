@@ -153,6 +153,12 @@ cd scripts/
 
 Or you can create your own custom script based on `run_all` or `run_no_pack_no_fs_no_dyld`. Read more below.
 
+If you want to check all files and folders corresponding to a given firmware ID, use the `list_files` wrapper script. It gives you information about the existence and basic properties of those files (IPSW input file, kernelcache, reversed sandbox profiles etc.):
+
+```
+./list_files iPhone5,1_9.3_13E237
+```
+
 ## Internals
 
 External tools are located in the `tools/` subfolder. They are to be run through two layers of scripts: a lower-layer set of scripts located in the `bin/` subfolder and a higher-layer set of scripts in the `scripts/` subfolder. The scripts in the `scripts/` subfolder are the ones you will work with.
