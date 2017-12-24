@@ -125,22 +125,22 @@ The `ipsw/` folder stores downloaded IPSW files and the `out/` folder stores dat
 
 ## Usage
 
-In order to do all processing for a given firmware, use the `all` wrapper script. You need to pass it a firmware id, i.e. one of the file names in the `firmware-metadata/` subfolder:
+In order to do all processing for a given firmware, use the `run_all` wrapper script. You need to pass it a firmware id, i.e. one of the file names in the `firmware-metadata/` subfolder:
 
 ```
-./all iPhone5,1_9.3_13E237
+./run_all iPhone5,1_9.3_13E237
 ```
 
-If you want to do all steps except the lengthier (and more storage hungry) steps of packing the filesystem and extracting the system dynamic libraries files, you can use the `all_no_pack_fs_no_dyld` wrapper script:
+If you want to do all steps except the lengthier (and more storage hungry) steps of packing the filesystem and extracting the system dynamic libraries files, you can use the `run_no_pack_fs_no_dyld` wrapper script:
 
 ```
-./all_no_pack_fs_no_dyld iPhone5,1_9.3_13E237
+./run_no_pack_fs_no_dyld iPhone5,1_9.3_13E237
 ```
 
-Similarly, if you downloaded and unpacked IPSW files elsewhere (on another system), you copied the interesting extracted data and you want to work on that data without going into the download and unpack steps, you can use the `all_no_download_no_unpack` script:
+Similarly, if you downloaded and unpacked IPSW files elsewhere (on another system), you copied the interesting extracted data and you want to work on that data without going into the download and unpack steps, you can use the `run_no_download_no_unpack` script:
 
 ```
-./all_no_download_no_unpack iPhone5,1_9.3_13E237
+./run_no_download_no_unpack iPhone5,1_9.3_13E237
 ```
 
 You can run a single step by going to the `scripts/` subfolder and running a script there:
@@ -150,7 +150,7 @@ cd scripts/
 ./decrypt_kernel iPhone5,1_9.3_13E237
 ```
 
-Or you can create your own custom script based on `all` or `all_no_pack_no_fs_no_dyld`. Read more below.
+Or you can create your own custom script based on `run_all` or `run_no_pack_no_fs_no_dyld`. Read more below.
 
 ## Internals
 
@@ -160,7 +160,7 @@ Each higher-layer script in the `scripts/` subfolder does a specific action: unp
 
 Each script uses a firmware id as an argument; supported firmware ids are files in the `firmware-metadata/` subfolder; each file in the `firmware-metadata/` subfolder uses the firmware id as a name and stores in plain text firmware-related information required by scripts. You can add support for a new firmware, by creating a file in the `firmware-metadata/` subfolder named after the firmware id and filling it with the required information (download URL and decryption keys) similar to existing files.
 
-You can run each script in the `scripts/` subfolder either by itself, or by tying scripts together in a wrapper script, such as `all`, `all_no_pack_fs`, `all_no_pack_fs_no_dyld`, `all_no_download_no_unpack` and `all_sandblaster`. For debugging purposes or if you want to work on the lower layers, use the scripts in the `bin/` subfolder.
+You can run each script in the `scripts/` subfolder either by itself, or by tying scripts together in a wrapper script, such as `run_all`, `run_no_pack_fs`, `run_no_pack_fs_no_dyld`, `run_no_download_no_unpack` and `run_sandblaster`. For debugging purposes or if you want to work on the lower layers, use the scripts in the `bin/` subfolder.
 
 When running a script, if previous output data exists it will prompt if you want to overwrite that. That is why, in a wrapper script, you would usually provide an `N` (for `no`) to the standard input of a script:
 
