@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 <wrapper-script>" 1>&2
+    echo "" 1>&2
+    echo "Argument is wrapper script to run fo each firmware (e.g. all_sandblaster)" 1>&2
+    echo ""
+    echo "Firmware IDs are provided to standard input. You can provide all " 1>&2
+    echo "firmware IDs from the firmware-metadata/ folder by running:" 1>&2
+    echo "    ls firmware-metadata/ | grep '^iP' | ./for_each_firmware all_sandblaster" 1>&2
+    exit 1
+fi
+
+wrapper_script="$1"
+if ! test -f "$wrapper_script"; then
+    echo "No such file $wrapper_script" 1>&2
+    exit 1
+fi
+
+while read firmware_id; do
+    echo "== Running $wrapper_script for firmware ID $firmware_id"
+    bash "$wrapper_script" "$firmware_id"
+done
