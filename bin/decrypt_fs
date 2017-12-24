@@ -28,6 +28,11 @@ else
     warn_if_error
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+    info "macOS is able to attach and mount .dmg files. Not converting $decrypted to $img"
+    exit 0
+fi
+
 part_num=$(dmg2img -l "$decrypted" | grep "disk image" | awk '{print $2}' | head -c 2)
 debug "Extracting partition $part_num in dmg file $decrypted to filesystem image file $img ..."
 debug "dmg2img -p $part_num -i $decrypted -o $img"
