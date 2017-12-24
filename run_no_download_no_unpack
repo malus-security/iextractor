@@ -9,6 +9,7 @@ fi
 
 firmware_id="$1"
 
+echo "* Change working directory to scripts/"
 cd scripts
 echo "* Decrypt disk image file"
 yes N | ./decrypt_fs "$firmware_id"

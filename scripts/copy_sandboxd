@@ -4,14 +4,15 @@ source common
 
 mount_point=/mnt/ios/"$base"
 if ! mount | grep -qs "$mount_point"; then
-    echo "No volume is mounted in $mount_point" 1>&2
+    error "No volume is mounted in $mount_point"
     exit 1
 fi
 
 path_to_sandboxd=/usr/libexec/sandboxd
 src="$mount_point"/"$path_to_sandboxd"
 if ! test -f "$src"; then
-    echo "There is no sandboxd file ($path_to_sandboxd) in $mount_point" 1>&2
+    # Do not signal error, as there is no sandboxd file for iOS >= 9.
+    info "There is no sandboxd file ($path_to_sandboxd) in $mount_point"
     exit 1
 fi
 
@@ -20,5 +21,7 @@ if test -f "$dest"; then
     if_no_exit "Sandboxd file $dest already exists, a previous copying has probably taken place."
 fi
 
-echo "Copying sandboxd file to $dest ..."
-cp "$src" "$dest"
+debug "Copying sandboxd file from $src to $dest ..."
+debug "cp $src $dest"
+cp "$src" "$dest" > /dev/null 2>&1
+warn_if_error

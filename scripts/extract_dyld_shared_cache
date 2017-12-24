@@ -3,27 +3,26 @@
 source common
 
 if [[ $OSTYPE != darwin* ]]; then
-    echo "No support for extracting the dyld_shared_cache on the $OSTYPE platform"
+    error "No support for extracting the dyld shared cache on the $OSTYPE platform."
     exit 1
 fi
 
 mount_point=/mnt/ios/"$base"
 if ! mount | grep -qs "$mount_point"; then
-    echo "No volume is mounted in $mount_point" 1>&2
+    error "No volume is mounted in $mount_point"
     exit 1
 fi
 
 path_to_dyld_shared_cache=/System/Library/Caches/com.apple.dyld
 paths=("$mount_point"/"$path_to_dyld_shared_cache"/dyld_shared_cache_*)
-echo $paths
 if test "${#paths[@]}" -eq 0; then
-    echo "There is no dyld_shared_cache file ($path_to_dyld_shared_cache) in $mount_point" 1>&2
+    error "There is no dyld_shared_cache file ($path_to_dyld_shared_cache) in $mount_point"
     exit 1
 elif test "${#paths[@]}" -eq 1; then
     src=${paths[0]}
 else
     src=${paths[0]}
-    echo "Multiple shared cache files, going for the first one: $src"
+    info "Multiple shared cache files, going for the first one: $src"
 fi
 
 dest="$out_dir"/dyld_shared_cache
@@ -33,5 +32,7 @@ else
     mkdir "$out_dir"/dyld_shared_cache/
 fi
 
+debug "Change working directory to bin/"
 cd ../bin
+debug "./extract_dyld_shared_cache $src $dest"
 ./extract_dyld_shared_cache "$src" "$dest"

@@ -3,16 +3,18 @@
 source common
 
 if test $UID -ne 0; then
-    echo "You need to be root to run this script." 1>&2
+    error "You need to be root to run this script."
     exit 1
 fi
 
 mount_point=/mnt/ios/"$base"
 if ! mount | grep -qs "$mount_point"; then
-    echo "No volume is mounted in $mount_point" 1>&2
+    error "No volume is mounted in $mount_point"
     exit 1
 fi
 
+debug "Change working directory to bin/"
 cd ../bin
+debug "./unmount_fs $mount_point"
 ./unmount_fs "$mount_point"
 rmdir "$mount_point"

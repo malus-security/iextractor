@@ -1,24 +1,30 @@
 #!/bin/bash
 
+source common
+
 if test $# -ne 1; then
-    echo "Usage: $0 mount_point" 1>&2
-    echo "" 1>&2
-    echo "Argument is the mount point" 1>&2
+    usage "Usage: $0 mount_point"
+    usage ""
+    usage "Argument is the mount point"
     exit 1
 fi
 
 if test $UID -ne 0; then
-    echo "You need to be root to run this script." 1>&2
+    error "You need to be root to run this script."
     exit 1
 fi
 
 mount_point="${1%/}"
 
-echo "Unmounting disks for mount point $mount_point ..."
+debug "Unmounting disks for mount point $mount_point ..."
 if [[ $OSTYPE == darwin* ]]; then
     for d in $(hdiutil info | grep -B 15 "$mount_point" | grep '^/dev/disk[0-9]\+'$'\t' | cut -d $'\t' -f 1 | tac); do
-        hdiutil detach "$d"
+        debug "hdiutil detach $d"
+        hdiutil detach "$d" > /dev/null 2>&1
+        warn_if_error
     done
 else
-    umount "$mount_point"
+    debug "umount $mount_point"
+    umount "$mount_point" > /dev/null 2>&1
+    warn_if_error
 fi

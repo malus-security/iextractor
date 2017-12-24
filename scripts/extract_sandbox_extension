@@ -4,7 +4,7 @@ source common
 
 kernelcache="$out_dir"/kernelcache.mach.arm
 if ! test -f "$kernelcache"; then
-    echo "There is no kernelcache.mach.arm file in $out_dir" 1>&2
+    error "There is no kernelcache.mach.arm file in $out_dir"
     exit 1
 fi
 
@@ -13,5 +13,7 @@ if test -f "$sandbox_kext"; then
     if_no_exit "Sandbox extension file $sandbox_kext already exists. Extraction has likely happened previously."
 fi
 
+debug "Change working directory to bin/"
 cd ../bin
+debug "./extract_sandbox_extension $kernelcache"
 ./extract_sandbox_extension "$kernelcache"

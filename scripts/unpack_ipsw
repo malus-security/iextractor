@@ -3,17 +3,17 @@
 source common
 
 if ! test -f "$ipsw"; then
-    echo "Firmware file ($ipsw) does not exist." 1>&2
+    error "Firmware file ($ipsw) does not exist."
     exit 1
 fi
 
 if ! grep '.ipsw$' <<<"$ipsw" > /dev/null 2>&1; then
-    echo "Firmware file ($ipsw) must be an .ipsw file." 1>&2
+    error "Firmware file ($ipsw) must be an .ipsw file."
     exit 1
 fi
 
 if ! file "$ipsw" | grep -i "zip" > /dev/null 2>&1; then
-    echo "Firmware file ($ipsw) must be an .ipsw file." 1>&2
+    error "Firmware file ($ipsw) must be an .ipsw file."
     exit 1
 fi
 
@@ -21,8 +21,10 @@ if test -d "$out_dir"; then
     if_no_exit "Folder to unpack ($out_dir) already exists, a previous unpacking may have already taken place."
 fi
 
-echo "Creating folder $out_dir ..."
+debug "Creating folder $out_dir if does not exist ..."
 test -d "$out_dir" || mkdir -p "$out_dir"
 
-echo "Unpacking ipsw file $ipsw to $out_dir ..."
-unzip -o -qq "$ipsw" -d "$out_dir"
+debug "Unpacking ipsw file $ipsw to $out_dir ..."
+debug "unzip -o -qq $ipsw -d $out_dir"
+unzip -o -qq "$ipsw" -d "$out_dir" > /dev/null 2>&1
+warn_if_error

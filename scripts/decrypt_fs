@@ -2,17 +2,10 @@
 
 source common
 
-if test $# -ne 1; then
-    echo "Usage: $0 <firmware-identifier>" 1>&2
-    echo "" 1>&2
-    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
-    exit 1
-fi
-
 dmg=$(ls -S "$out_dir" | grep '^[0-9]\{3\}-[0-9]\+-[0-9]\{3\}.dmg' 2> /dev/null | head -n 1)
 if ! test -f "$out_dir"/"$dmg"; then
-    echo "There is no .dmg file in $out_dir" 1>&2
-    echo "Folder $out_dir doesn't store contents of an unpacked .ipsw file" 1>&2
+    error "There is no .dmg file in $out_dir"
+    error "Folder $out_dir doesn't store contents of an unpacked .ipsw file."
     exit 1
 fi
 
@@ -22,5 +15,7 @@ fi
 
 rootfs_key=$(cat "$metadata" | grep '^rootfs_key:' | sed 's/^[^:]*://' | tr -d ' ')
 
+debug "Change working directory to bin/"
 cd ../bin
+debug "./decrypt_fs $out_dir/$dmg $rootfs_key"
 ./decrypt_fs "$out_dir"/"$dmg" "$rootfs_key"

@@ -1,21 +1,19 @@
 #!/bin/bash
 
-if test $# -ne 1; then
-    echo "Usage: $0 kernelcache" 1>&2
-    echo "" 1>&2
-    echo "Arguments is the kernelcache file" 1>&2
-    exit 1
-fi
+source common
 
-if [[ "$OSTYPE" == linux* ]]; then
-    JOKER=../tools/joker/joker.ELF64
-elif [[ "$OSTYPE" == darwin* ]]; then
-    JOKER=../tools/joker/joker.universal
+if test $# -ne 1; then
+    usage "Usage: $0 kernelcache"
+    usage ""
+    usage "Arguments is the kernelcache file"
+    exit 1
 fi
 
 kernelcache="$1"
 dir=$(dirname "$kernelcache")
 export JOKER_DIR="$dir"
 
-echo "Extracting sandbox extension to $dir ..."
-"$JOKER" -K com.apple.security.sandbox "$kernelcache"
+debug "Extracting sandbox extension from $kernelcache to $dir/com.apple.security.sandbox.kext ..."
+debug "$JOKER -K com.apple.security.sandbox $kernelcache"
+"$JOKER" -K com.apple.security.sandbox "$kernelcache" > /dev/null 2>&1
+warn_if_error

@@ -17,7 +17,10 @@ call_reverse()
     if [[ "$profile" != /* ]]; then
         profile=../../"$profile"
     fi
-    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile"
+    debug "Reversing sandbox profile(s) from $profile to $dest ..."
+    debug "python reverse_sandbox.py -r $version -o $sb_ops -d $dest $profile 2> /dev/null"
+    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile" 2> /dev/null > /dev/null
+    warn_if_error
 }
 
 t=${base%_*}
@@ -26,7 +29,7 @@ major=${version%%.*}
 
 sb_ops="$out_dir"/sb_ops
 if ! test -f "$sb_ops"; then
-    echo "There is no sb_ops file in $out_dir" 1>&2
+    error "There is no sb_ops file in $out_dir"
     exit 1
 fi
 
@@ -39,11 +42,12 @@ mkdir -p "$dest"
 if test "$major" -lt 9; then
     src="$out_dir"/sandbox_profiles
     if ! test -d "$src"; then
-        echo "There is no sandbox_profiles/ folder in $out_dir" 1>&2
+        error "There is no sandbox_profiles/ subfolder in $out_dir"
         exit 1
     fi
 
     profiles=("$src"/*)
+    debug "Change working directory to ../tools/sandblaster/reverse-sandbox/"
     cd ../tools/sandblaster/reverse-sandbox/
     for p in ${profiles[@]}; do
         call_reverse "$version" "$sb_ops" "$dest" "$p"
@@ -51,10 +55,11 @@ if test "$major" -lt 9; then
 else
     src="$out_dir"/sandbox_bundle
     if ! test -f "$src"; then
-        echo "There is no sandbox_bundle file in $out_dir" 1>&2
+        error "There is no sandbox_bundle file in $out_dir"
         exit 1
     fi
 
+    debug "Change working directory to ../tools/sandblaster/reverse-sandbox/"
     cd ../tools/sandblaster/reverse-sandbox/
     call_reverse "$version" "$sb_ops" "$dest" "$src"
 fi

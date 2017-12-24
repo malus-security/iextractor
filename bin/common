@@ -35,24 +35,6 @@ fi
 
 source config
 
-if ! test -d "$STORE"; then
-    error "Store folder ($STORE) does not exist."
-    error "Create it and its subfolders from the config file."
-    exit 1
-fi
-
-if ! test -d "$IPSW_STORE"; then
-    error "Error: Firmware files folder ($IPSW_STORE) does not exist."
-    error "Create it to store downloaded firmware images."
-    exit 1
-fi
-
-if ! test -d "$OUT_STORE"; then
-    error "Error: Output folder ($OUT_STORE) does not exist."
-    error "Create it to store temporary processed/unpacked data."
-    exit 1
-fi
-
 VFDECRYPT=tools/vfdecrypt/vfdecrypt
 XPWN=tools/xpwn/builddir/ipsw-patch/xpwntool
 LZSSDEC=tools/lzssdec/lzssdec
@@ -62,7 +44,6 @@ if [[ "$OSTYPE" == linux* ]]; then
 elif [[ "$OSTYPE" == darwin* ]]; then
     JOKER=tools/joker/joker.universal
 fi
-FW_METADATA_DIR=firmware-metadata
 
 if ! test -f "$VFDECRYPT"; then
     error "Error: vfdecrypt executable does not exist at $VFDECRYPT"
@@ -92,50 +73,10 @@ if ! test -f "$JOKER"; then
     exit 1
 fi
 
-if test $# -ne 1; then
-    usage "Usage: $0 <firmware-identifier>"
-    usage ""
-    usage "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)"
-    exit 1
-fi
-
-cd scripts/
-
-base="$1"
-metadata=../"$FW_METADATA_DIR/$base"
-if ! test -f "$metadata"; then
-    error "There is no configuration file in $FW_METADATA_DIR for identifier $base"
-    error "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)"
-    exit 1
-fi
+cd bin/
 
 VFDECRYPT=../"$VFDECRYPT"
 XPWN=../"$XPWN"
 LZSSDEC=../"$LZSSDEC"
 DYLD_EXTRACTOR=../"$DYLD_EXTRACTOR"
 JOKER=../"$JOKER"
-FW_METADATA_DIR=../"$FW_METADATA_DIR"
-
-if [[ "$STORE" != /* ]]; then
-    STORE=../"$STORE"
-fi
-if [[ "$IPSW_STORE" != /* ]]; then
-    IPSW_STORE=../"$IPSW_STORE"
-fi
-if [[ "$OUT_STORE" != /* ]]; then
-    OUT_STORE=../"$OUT_STORE"
-fi
-
-out_dir="$OUT_STORE"/"$base"
-ipsw="$IPSW_STORE"/"$base"_Restore.ipsw
-
-if_no_exit()
-{
-    echo -en "$1 Do you want to continue?[y/N] "
-    read -n 1 -r
-    if [[ "$REPLY" =~ ^[Nn]$ || "$REPLY" == "" ]]; then
-        echo "Not continuing."
-        exit 0
-    fi
-    echo "Continuing ..."
-}

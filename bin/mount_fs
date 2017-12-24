@@ -1,14 +1,16 @@
 #!/bin/bash
 
+source common
+
 if test $# -ne 2; then
-    echo "Usage: $0 fs_image_file mount_point" 1>&2
-    echo "" 1>&2
-    echo "Arguments are disk image (.dmg, OS X only) or root filesystem image (.img) file and the mount point" 1>&2
+    usage "Usage: $0 fs_image_file mount_point"
+    usage ""
+    usage "Arguments are disk image (.dmg, OS X only) or root filesystem image (.img) file and the mount point"
     exit 1
 fi
 
 if test $UID -ne 0; then
-    echo "You need to be root to run this script." 1>&2
+    error "You need to be root to run this script."
     exit 1
 fi
 
@@ -19,20 +21,27 @@ mount_point="$2"
 ext=${image: -4}
 if [[ "$ext" == ".dmg" ]]; then
     if [[ $OSTYPE != darwin* ]]; then
-        echo "Disk image format (.dmg) only supported on OS X" 1>&2
+        error "Disk image format (.dmg) only supported on OS X"
         exit 1
     fi
-    echo "Mounting image file $image to $mount_point ..."
-    hdiutil attach -noverify -mountpoint "$mount_point" "$image"
+    debug "Mounting disk image file $image to $mount_point ..."
+    debug "hdiutil attach -noverify -mountpoint $mount_point $image"
+    hdiutil attach -noverify -mountpoint "$mount_point" "$image" > /dev/null 2>&1
+    warn_if_error
 elif [[ "$ext" == ".img" ]]; then
     if [[ $OSTYPE == linux* ]]; then
         modprobe hfsplus
-        echo "Mounting image file $image to $mount_point ..."
-        mount -t hfsplus -o loop "$image" "$mount_point"
+        debug "Mounting image file $image to $mount_point ..."
+        debug "mount -t hfsplus -o loop $image $mount_point"
+        mount -t hfsplus -o loop "$image" "$mount_point" > /dev/null 2>&1
+        warn_if_error
     elif [[ $OSTYPE == darwin* ]]; then
-        hdiutil mount -mountpoint "$mount_point" "$image"
+        debug "Mounting image file $image to $mount_point ..."
+        debug "hdiutil mount -mountpoint $mount_point $image"
+        hdiutil mount -mountpoint "$mount_point" "$image" > /dev/null 2>&1
+        warn_if_error
     fi
 else
-    echo "Unknown image extension $ext" 2>&1
+    error "Unknown image extension $ext"
     exit 1
 fi

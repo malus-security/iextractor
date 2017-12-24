@@ -2,13 +2,6 @@
 
 source common
 
-if test $# -ne 1; then
-    echo "Usage: $0 <firmware-identifier>" 1>&2
-    echo "" 1>&2
-    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
-    exit 1
-fi
-
 kernelcache_decrypted="$out_dir"/kernelcache.decrypted
 if test -f "$kernelcache_decrypted"; then
     if_no_exit "Decrypted kernelcache file $kernelcache_decrypted already exists, a previous decryption may have already taken place."
@@ -17,12 +10,12 @@ fi
 kernelcache_files=("$out_dir"/kernelcache.release*)
 num=${#kernelcache_files[@]}
 if test "$num" -eq 0; then
-    echo "No kernelcache.release files in $out_dir." 2>&1
+    error "No kernelcache.release files in $out_dir"
     exit 1
 elif test ${#kernelcache_files[@]} -eq 1; then
     kernelcache_crypted=${kernelcache_files[0]}
 else
-    echo "More than one kernelcache files in $out_dir. Using the last one." 2>&1
+    info "More than one kernelcache files in $out_dir. Using the last one."
     num=$((${#kernelcache_files[@]}-1))
     kernelcache_crypted=${kernelcache_files[$num]}
 fi
@@ -30,5 +23,7 @@ fi
 iv=$(cat "$metadata" | grep '^kernelcache_iv:' | sed 's/^[^:]*://' | tr -d ' ')
 key=$(cat "$metadata" | grep '^kernelcache_key:' | sed 's/^[^:]*://' | tr -d ' ')
 
+debug "Change working directory to bin/"
 cd ../bin
+debug "./decrypt_kernel $kernelcache_crypted $iv $key"
 ./decrypt_kernel "$kernelcache_crypted" "$iv" "$key"

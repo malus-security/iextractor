@@ -9,6 +9,7 @@ fi
 
 firmware_id="$1"
 
+echo "* Change working directory to scripts/"
 cd scripts
 echo "* Download firmware image"
 yes N | ./download_ipsw "$firmware_id"

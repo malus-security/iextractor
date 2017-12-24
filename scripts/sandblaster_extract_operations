@@ -7,7 +7,7 @@ version=${t##*_}
 
 sandbox_kext="$out_dir"/com.apple.security.sandbox.kext
 if ! test -f "$sandbox_kext"; then
-    echo "There is no com.apple.security.sandbox.kext file in $out_dir" 1>&2
+    error "There is no com.apple.security.sandbox.kext file in $out_dir"
     exit 1
 fi
 
@@ -18,7 +18,7 @@ fi
 mkdir -p "$out_dir"
 
 if [[ $OSTYPE != darwin* ]]; then
-    echo "No support for extracting sandbox operations on the $OSTYPE platform"
+    error "No support for extracting sandbox operations on the $OSTYPE platform."
     exit 1
 fi
 
@@ -30,5 +30,8 @@ if [[ "$sandbox_kext" != /* ]]; then
     sandbox_kext=../../"$sandbox_kext"
 fi
 
+debug "Change working directory to ../tools/sandblaster/helpers/"
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_operations "$sandbox_kext" "$version" > "$sb_ops"
+debug "./extract_sandbox_operations $sandbox_kext $version > $sb_ops"
+./extract_sandbox_operations "$sandbox_kext" "$version" > "$sb_ops" 2> /dev/null
+warn_if_error

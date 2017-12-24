@@ -1,14 +1,13 @@
 #!/bin/bash
 
+source common
+
 if test $# -ne 1 -a $# -ne 3; then
-    echo "Usage: $0 kernelcache [iv] [key]" 1>&2
-    echo "" 1>&2
-    echo "Arguments are kernelcache file and (optional) initialization vector and key in case the kernelcache is encrypted" 1>&2
+    usage "Usage: $0 kernelcache [iv] [key]"
+    usage ""
+    usage "Arguments are kernelcache file and (optional) initialization vector and key in case the kernelcache is encrypted."
     exit 1
 fi
-
-XPWN=../tools/xpwn/builddir/ipsw-patch/xpwntool
-LZSSDEC=../tools/lzssdec/lzssdec
 
 kernelcache_crypted="$1"
 iv="$2"
@@ -18,19 +17,23 @@ kernelcache_decrypted="$dir"/kernelcache.decrypted
 kernelcache="$dir"/kernelcache.mach.arm
 
 if test -z "$iv" -o -z "$key"; then
-    echo "No kernelcache key or iv provided. Assuming they are not required and not decrypting kernelcache image."
-    echo "Creating a hardlink from $kernelcache_crypted to kernelcache file in $kernelcache_decrypted ..."
-    iv=""
-    key=""
-    ln -f "$kernelcache_crypted" "$kernelcache_decrypted"
+    debug "No kernelcache key or iv provided. Assuming they are not required and not decrypting kernelcache image."
+    debug "Creating a hardlink from $kernelcache_crypted to kernelcache file in $kernelcache_decrypted ..."
+    debug "ln -f $kernelcache_crypted $kernelcache_decrypted"
+    ln -f "$kernelcache_crypted" "$kernelcache_decrypted" > /dev/null 2>&1
+    warn_if_error
 else
     # Decrypt kernel using instructions below:
     # https://www.nowsecure.com/blog/2014/04/14/ios-kernel-reversing-step-by-step/
-    echo "Decrypting kernelcache file $kernelcache_crypted to $kernelcache_decrypted ..."
-    "$XPWN" "$kernelcache_crypted" "$kernelcache_decrypted" -iv "$iv" -k "$key" -decrypt
+    debug "Decrypting kernelcache file $kernelcache_crypted to $kernelcache_decrypted ..."
+    debug "$XPWN $kernelcache_crypted $kernelcache_decrypted -iv $iv -k $key -decrypt"
+    "$XPWN" "$kernelcache_crypted" "$kernelcache_decrypted" -iv "$iv" -k "$key" -decrypt > /dev/null 2>&1
+    warn_if_error
 fi
 
 lzss_offset=$(./get_lzss_section_offset.py "$kernelcache_decrypted")
 
-echo "Unpacking kernelcache file $kernelcache_decrypted to $kernelcache ..."
-$LZSSDEC -o "$lzss_offset" < "$kernelcache_decrypted" > "$kernelcache"
+debug "Unpacking kernelcache file $kernelcache_decrypted (offet $lzss_offset) to $kernelcache ..."
+debug "$LZSSDEC -o $lzss_offset < $kernelcache_decrypted > $kernelcache"
+$LZSSDEC -o "$lzss_offset" < "$kernelcache_decrypted" > "$kernelcache" 2> /dev/null
+warn_if_error

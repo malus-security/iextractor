@@ -4,13 +4,15 @@ source common
 
 url=$(cat "$metadata" | grep '^firmware_download_url:' | sed 's/^[^:]*://' | tr -d ' ')
 if test -z "$url"; then
-    echo "No download URL in $metadata" 1>&2
+    error "No download URL in $metadata"
     exit 1
 fi
 
 if test -f "$ipsw"; then
-    if_no_exit "Firmware file already exists at $ipsw." 1>&2
+    if_no_exit "Firmware file already exists at $ipsw"
 fi
 
-echo "Downloading firmware image file from $url ..."
-wget "$url" -O "$ipsw"
+debug "Downloading firmware image file from $url to $ipsw ..."
+debug "wget $url -O $ipsw"
+wget "$url" -O "$ipsw" > /dev/null 2>&1
+warn_if_error

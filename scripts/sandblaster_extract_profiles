@@ -9,7 +9,7 @@ major=${version%%.*}
 if test "$major" -lt 9; then
     binary_file="$out_dir"/sandboxd
     if ! test -f "$binary_file"; then
-        echo "There is no sandboxd file in $out_dir" 1>&2
+        error "There is no sandboxd file in $out_dir"
         exit 1
     fi
 
@@ -21,7 +21,7 @@ if test "$major" -lt 9; then
 else
     binary_file="$out_dir"/com.apple.security.sandbox.kext
     if ! test -f "$binary_file"; then
-        echo "There is no com.apple.security.sandbox.kext file in $out_dir" 1>&2
+        error "There is no com.apple.security.sandbox.kext file in $out_dir"
         exit 1
     fi
 
@@ -32,7 +32,7 @@ else
 fi
 
 if [[ $OSTYPE != darwin* ]]; then
-    echo "No support for extracting sandbox profiles on the $OSTYPE platform"
+    error "No support for extracting sandbox profiles on the $OSTYPE platform."
     exit 1
 fi
 
@@ -44,5 +44,8 @@ if [[ "$binary_file" != /* ]]; then
     binary_file=../../"$binary_file"
 fi
 
+debug "Change working directory to ../tools/sandblaster/helpers/"
 cd ../tools/sandblaster/helpers/
-./extract_sandbox_profiles "$binary_file" "$version" "$out_dir"
+debug "./extract_sandbox_profiles $binary_file $version $out_dir"
+./extract_sandbox_profiles "$binary_file" "$version" "$out_dir" > /dev/null 2>&1
+warn_if_error

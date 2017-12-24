@@ -9,6 +9,7 @@ fi
 
 firmware_id="$1"
 
+echo "* Change working directory to scripts/"
 cd scripts
 echo "* Extract sandbox profiles"
 yes N | ./sandblaster_extract_operations "$firmware_id"
