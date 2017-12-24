@@ -159,6 +159,12 @@ If you want to check all files and folders corresponding to a given firmware ID,
 ./list_files iPhone5,1_9.3_13E237
 ```
 
+Similarly, if you want to remove all or some of the files and folders corresponding to a givn firmware ID, use the `clean.sample` script or create a script starting from that. The `clean.sample` script uses `rm -i` (i.e. interactive run) to prevent you from removing a file by mistake:
+
+```
+./clean.sample iPhone5,1_9.3_13E237
+```
+
 ## Internals
 
 External tools are located in the `tools/` subfolder. They are to be run through two layers of scripts: a lower-layer set of scripts located in the `bin/` subfolder and a higher-layer set of scripts in the `scripts/` subfolder. The scripts in the `scripts/` subfolder are the ones you will work with.

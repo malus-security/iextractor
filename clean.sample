@@ -1,0 +1,55 @@
+#!/bin/bash
+
+source config
+
+if test $# -ne 1; then
+    echo "Usage: $0 <firmware-identifier>" 1>&2
+    echo "" 1>&2
+    echo "Argument is firmware identifier (e.g iPhone5,1_9.3_13E237)" 1>&2
+    exit 1
+fi
+
+firmware_id="$1"
+
+ipsw="$IPSW_STORE"/"$firmware_id"_Restore.ipsw
+
+out_dir="$OUT_STORE"/"$firmware_id"
+decrypted="$out_dir"/decrypted.dmg
+rootfs_img="$out_dir"/rootfs.img
+fs_archive="$out_dir"/fs.tar.gz
+sandboxd="$out_dir"/sandboxd
+dyld_shared_cache="$out_dir"/dyld_shared_cache
+kernelcache_decrypted="$out_dir"/kernelcache.decrypted
+kernelcache="$out_dir"/kernelcache.mach.arm
+sandbox_kext="$out_dir"/com.apple.security.sandbox.kext
+sb_ops="$out_dir"/sb_ops
+sandbox_profiles="$out_dir"/sandbox_profiles
+sandbox_bundle="$out_dir"/sandbox_bundle
+reversed_profiles="$out_dir"/reversed_profiles
+
+echo "* Remove ipsw file $ipsw"
+rm -i "$ipsw"
+echo "* Remove decrypted disk image file $decrypted"
+rm -i "$decrypted"
+echo "* Remove root filesystem image file $rootfs_img"
+rm -i "$rootfs_img"
+echo "* Remove filesystem archive file $fs_archive"
+rm -i "$fs_archive"
+echo "* Remove sandboxd file $sandboxd"
+rm -i "$sandboxd"
+echo "* Remove dyld_shared_cache folder $dyld_shared_cache"
+rm -i -r "$dyld_shared_cache"
+echo "* Remove decrypted kernelcache file $kernelcache_decrypted"
+rm -i "$kernelcache_decrypted"
+echo "* Remove kernelcache file $kernelcache"
+rm -i "$kernelcache"
+echo "* Remove sandbox extension file $sandbox_kext"
+rm -i "$sandbox_kext"
+echo "* Remove sandbox operations file $sb_ops"
+rm -i "$sb_ops"
+echo "* Remove sandbox profiles folder $sandbox_profiles"
+rm -i -r "$sandbox_profiles"
+echo "* Remove sandbox bundle file $sandbox_bundle"
+rm -i "$sandbox_bundle"
+echo "* Remove reversed profiles folder $reversed_profiles"
+rm -i -r "$reversed_profiles"
