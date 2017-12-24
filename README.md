@@ -61,48 +61,49 @@ Some external tools in the `tools/` subfolder need to be built. You need to buil
 
   * `vfdecrypt`
 
-```
-cd tools/vfdecrypt/
-make
-```
+    ```
+    cd tools/vfdecrypt/
+    make
+    ```
 
   * `lzssdec`
 
-```
-cd tools/lzssdec/
-make
-```
+    ```
+    cd tools/lzssdec/
+    make
+    ```
 
   * `dsc_extractor`
 
-```
-cd tools/dyld/
-make
-```
+    ```
+    cd tools/dyld/
+    make
+    ```
 
   * `xpwn`
 
-```
-cd tools/xpwn/
-mkdir builddir
-cd builddir/
-cmake ..
-make
-```
+    ```
+    cd tools/xpwn/
+    mkdir builddir
+    cd builddir/
+    cmake ..
+    make
+    ```
+
     Use `builddir/` for the folder name as it is hardcoded inside scripts.
 
   * `sandblaster` dependencies (only available on macOS):
 
-```
-cd tools/sandblaster
-git submodule update --init tools/sandbox_toolkit
-# while in tools/sandblaster/
-cd tools/sandbox_toolkit/extract_sbops
-make
-# while in tools/sandblaster/
-cd tools/sandbox_toolkit/extract_sbprofiles
-make
-```
+    ```
+    cd tools/sandblaster
+    git submodule update --init tools/sandbox_toolkit
+    # while in tools/sandblaster/
+    cd tools/sandbox_toolkit/extract_sbops
+    make
+    # while in tools/sandblaster/
+    cd tools/sandbox_toolkit/extract_sbprofiles
+    make
+    ```
 
 ## Setup
 
