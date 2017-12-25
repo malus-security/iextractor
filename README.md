@@ -182,3 +182,7 @@ yes N | ./decrypt_kernel "$firmware_id"
 ```
 
 You can start from existing scripts to create new ones and extend iExtractor to extract and process other interesting data from IPSW files.
+
+## Documentation
+
+Read in-depth information about iExtractor on [the wiki](https://github.com/malus-security/iExtractor/wiki).
