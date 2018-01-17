@@ -18,6 +18,6 @@ if [[ $OSTYPE != darwin* ]]; then
 fi
 
 debug "Extracting libraries from $dyld_shared_cache to $dyld_output ..."
-debug $DYLD_EXTRACTOR $dyld_shared_cache $dyld_output"
+debug "$DYLD_EXTRACTOR $dyld_shared_cache $dyld_output"
 "$DYLD_EXTRACTOR" "$dyld_shared_cache" "$dyld_output" > /dev/null 2>&1
 warn_if_error
