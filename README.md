@@ -25,6 +25,8 @@ iExtractor automates the unpacking, decryption and extraction of interesting dat
   * system dynamic library files (`.dylib`) from the unpacked dynamic library shared cache (`dyld_shared_cache`)
   * reversed sandbox profiles
 
+iExtractor is open source software released under the 3-clause BSD license.
+
 ## Installation
 
 iExtractor uses external tools and glue scripts. You have to run iExtractor in the Bourne-again Shell (Bash).
