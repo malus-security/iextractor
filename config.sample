@@ -8,6 +8,9 @@ IPSW_STORE="$STORE"/ipsw
 # Where to store extracted and processed files.
 OUT_STORE="$STORE"/out
 
+# Where to mount root filesystem.
+MOUNT_DIR="$STORE"/mnt
+
 # Make scripts print out general information.
 INFO=1
 

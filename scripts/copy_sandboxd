@@ -2,7 +2,7 @@
 
 source common
 
-mount_point=/mnt/ios/"$base"
+mount_point=$(realpath "$MOUNT_DIR"/ios/"$base")
 if ! mount | grep -qs "$mount_point"; then
     error "No volume is mounted in $mount_point"
     exit 1
