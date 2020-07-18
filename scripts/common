@@ -126,6 +126,10 @@ if [[ "$OUT_STORE" != /* ]]; then
     OUT_STORE=../"$OUT_STORE"
 fi
 
+if [[ "$MOUNT_DIR" != /* ]]; then
+    MOUNT_DIR=../"$MOUNT_DIR"
+fi
+
 out_dir="$OUT_STORE"/"$base"
 ipsw="$IPSW_STORE"/"$base"_Restore.ipsw
 

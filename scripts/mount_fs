@@ -23,8 +23,11 @@ else
     fi
 fi
 
-mount_point=/mnt/ios/"$base"
+mount_point="$MOUNT_DIR"/ios/"$base"
+
 mkdir -p "$mount_point"
+
+mount_point=$(realpath "$mount_point")
 if mount | grep -qs "$mount_point"; then
     error "A volume is already mounted in $mount_point"
     error "Unmount it first from $mount_point"
