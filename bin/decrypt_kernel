@@ -31,7 +31,7 @@ else
     warn_if_error
 fi
 
-lzss_offset=$(./get_lzss_section_offset.py "$kernelcache_decrypted")
+lzss_offset=$(python3 ./get_lzss_section_offset.py "$kernelcache_decrypted")
 
 debug "Unpacking kernelcache file $kernelcache_decrypted (offet $lzss_offset) to $kernelcache ..."
 debug "$LZSSDEC -o $lzss_offset < $kernelcache_decrypted > $kernelcache"
