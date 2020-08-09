@@ -1,5 +1,5 @@
-firmware_keys_url:
-firmware_download_url: 
+firmware_keys_url: https://www.theiphonewiki.com/wiki/Dalaman_15D60_(iPhone8,4)
+firmware_download_url: http://appldnld.apple.com/ios11.2.5/091-61855-20180122-2A0F1C2E-FC96-11E7-85C9-903FFE886B0F/iPhone_4.0_64bit_11.2.5_15D60_Restore.ipsw
 rootfs_key:
 kernelcache_iv:
 kernelcache_key:
