@@ -46,18 +46,19 @@ sudo apt-get install coreutils grep sed tar wget unzip build-essential
 sudo apt-get install libssl-dev python2.7 libz-dev libbz2-dev libusb-dev cmake libpng12-dev dmg2img
 ```
 
-or the following commands on macOS using [MacPorts](https://www.macports.org/):
+or the following commands on macOS using [MacPorts](https://www.macports.org/) and [Homebrew](https://brew.sh/):
 
 ```
 sudo port selfupdate
 sudo port install coreutils grep wget unzip
 sudo port install openssl python27 zlib bzip2 libpng cmake
 sudo port install libusb
+brew install coreutils
 ```
 
 The `dmg2img` tool and package isn't required on macOS. The `libusb` installation isn't required and it's not detected by the `xpwn` installation.
 
-There should be similar commands on macOS if you are using [Homebrew](https://brew.sh/).
+There should be similar commands on macOS if you are using only [Homebrew](https://brew.sh/).
 
 Some external tools in the `tools/` subfolder need to be built. You need to build:
 
