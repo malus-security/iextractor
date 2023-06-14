@@ -46,6 +46,9 @@ fi
 
 debug "Change working directory to ../tools/sandblaster/helpers/"
 cd ../tools/sandblaster/helpers/
-debug "./extract_sandbox_profiles $binary_file $version $out_dir"
-./extract_sandbox_profiles "$binary_file" "$version" "$out_dir" > /dev/null 2>&1
+debug "./extract_sandbox_data.py -O . "$binary_file" "$version""
+./extract_sandbox_data.py -O . "$binary_file" "$version" 2> /dev/null
+
+# old sandblaster helper scripts created sandbox_bundle in $out_dir
+mv sandbox_bundle "$out_dir"
 warn_if_error

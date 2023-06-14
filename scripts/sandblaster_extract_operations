@@ -32,6 +32,6 @@ fi
 
 debug "Change working directory to ../tools/sandblaster/helpers/"
 cd ../tools/sandblaster/helpers/
-debug "./extract_sandbox_operations $sandbox_kext $version > $sb_ops"
-./extract_sandbox_operations "$sandbox_kext" "$version" > "$sb_ops" 2> /dev/null
+debug "./extract_sandbox_data.py -o "$sb_ops" "$sandbox_kext" "$version""
+./extract_sandbox_data.py -o "$sb_ops" "$sandbox_kext" "$version" 2> /dev/null
 warn_if_error
