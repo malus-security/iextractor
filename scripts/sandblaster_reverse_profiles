@@ -18,8 +18,8 @@ call_reverse()
         profile=../../"$profile"
     fi
     debug "Reversing sandbox profile(s) from $profile to $dest ..."
-    debug "python reverse_sandbox.py -r $version -o $sb_ops -d $dest $profile 2> /dev/null"
-    python reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile" 2> /dev/null > /dev/null
+    debug "python2 reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile" 2> /dev/null"
+    python2 reverse_sandbox.py -r "$version" -o "$sb_ops" -d "$dest" "$profile" 2> /dev/null
     warn_if_error
 }
 
