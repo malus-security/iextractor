@@ -27,7 +27,13 @@ else
     # https://www.nowsecure.com/blog/2014/04/14/ios-kernel-reversing-step-by-step/
     debug "Decrypting kernelcache file $kernelcache_crypted to $kernelcache_decrypted ..."
     debug "$XPWN $kernelcache_crypted $kernelcache_decrypted -iv $iv -k $key -decrypt"
-    "$XPWN" "$kernelcache_crypted" "$kernelcache_decrypted" -iv "$iv" -k "$key" -decrypt > /dev/null 2>&1
+
+    echo "" > "$kernelcache_decrypted" # make sure the file exists, otherwise docker maps it as a directory
+    kernelcache_crypted_absolute=$(readlink -f "$kernelcache_crypted")
+    kernelcache_decrypted_absolute=$(readlink -f "$kernelcache_decrypted")
+    
+    docker run -v "$kernelcache_crypted_absolute":/in -v "$kernelcache_decrypted_absolute":/out -t ghcr.io/malus-security/xpwn:1.0 /in /out -iv "$iv" -k "$key" -decrypt > /dev/null 2>&1
+
     warn_if_error
 fi
 
